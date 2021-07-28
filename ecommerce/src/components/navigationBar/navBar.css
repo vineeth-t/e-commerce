@@ -4,13 +4,18 @@
     font-family: 'Montserrat Alternates', sans-serif;
     box-sizing: border-box;
     margin:0;
+ 
 }
 .navbar{
-
     /* font-size:large; */
-    font-weight:1000;
+    position: sticky;
+    background-color: white;
+	top: 0;
+	left: 0;
+	width: 100%;
     display:flex;
     justify-content: space-between;
+    font-weight:1000;
     align-items: center;
     padding:1rem;
     cursor:pointer;
