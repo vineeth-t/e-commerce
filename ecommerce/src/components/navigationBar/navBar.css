@@ -2,12 +2,13 @@
 
 *{  
     font-family: 'Montserrat Alternates', sans-serif;
-    font-size:large;
-    font-weight:1000;
     box-sizing: border-box;
     margin:0;
 }
 .navbar{
+
+    font-size:large;
+    font-weight:1000;
     display:flex;
     justify-content: space-between;
     align-items: center;
