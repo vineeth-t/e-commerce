@@ -6,7 +6,9 @@ import shoe from './catergoryImages/shoes.jpg'
 import './productCatergory.css'
 export function ShoppingCatergory(){
     return(
-        <div class='item-catergories'>
+        <div>
+            <h2 className='categories-heading'>Featured Categories</h2>
+            <div class='item-catergories'>
             <a className='catergory-img' style={{background:`url(${camera})no-repeat center/100% 100%`}}>
                 <span>Cameras</span>
                 <span>Flat 30%</span>
@@ -19,7 +21,7 @@ export function ShoppingCatergory(){
             <span>Earpods</span>
                 <span>1+1 Offer(Limted Offer)</span>
             </a>
-            
+            </div>
         </div>
     )
 }

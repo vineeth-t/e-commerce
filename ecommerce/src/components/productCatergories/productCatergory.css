@@ -26,3 +26,7 @@
     filter:blur(0);
     transform: scale(1.05);
 }
+.categories-heading{
+    padding: 1rem;
+    text-align: center;
+}
