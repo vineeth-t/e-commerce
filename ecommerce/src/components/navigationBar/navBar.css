@@ -19,8 +19,13 @@
     align-items: center;
     padding:1rem;
     cursor:pointer;
+  
+}
+.navbar-items:hover{
+    transform: scale(1.05);
 }
 .navbar-component a{
+  
     margin-left:2rem;
     text-align: center;
 }
@@ -37,6 +42,7 @@
     margin-left:2rem;
 }
 .navbar-items{
+transition: transform 0.2s ease-in;
 display:flex;
 cursor:pointer;
 justify-content: center;
