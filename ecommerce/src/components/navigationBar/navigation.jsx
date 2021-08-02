@@ -1,11 +1,12 @@
-import './navBar.css'
-export function NavBar(){
+import { useState } from 'react';
+import './navBar.css';
+export function NavBar({Route,setState}){
     return (
     <nav className='navbar'>
         <div className='navbar-component'>
-          <a class='nav-link'>JC</a>
-          <a>Home</a>
-          <a>Products</a>
+          <a className='nav-link'>JC</a>
+          <a onClick={()=>setState('Home')}>Home</a>
+          <a onClick={()=>setState('Products')}>Products</a>
         </div>
         <div className='navbar-left'>
             <div className='navbar-items'>

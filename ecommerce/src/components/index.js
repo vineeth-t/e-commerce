@@ -1,0 +1,5 @@
+export {Footer} from './footer/footer'
+export {Hero} from './heroImage/heroImage'
+export {NavBar} from './navigationBar/navigation'
+export {ShoppingCatergory} from './productCatergories/productCategory'
+export {ProductItemsListing} from './productListing/ProductListing'

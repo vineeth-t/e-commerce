@@ -11,7 +11,7 @@ export function ShoppingCatergory(){
     return(
         <div>
             <h2 className='categories-heading'>Featured Categories</h2>
-            <div class='item-catergories'>
+            <div className='item-catergories'>
                     <a className='catergory-img' style={{background:`url(${camera})no-repeat center/100% 100%`}}>
                         <span>Cameras</span>
                         <span>Flat 30%</span>
@@ -27,7 +27,7 @@ export function ShoppingCatergory(){
             </div>
             <div>
                 <h2 className='categories-heading'>Featured Brands</h2>
-                <div class='brand-types'>
+                <div className='brand-types'>
                     <a className='catergory-img brand' style={{background:`url(${apple})no-repeat center/100% 100%`}}/>
                     <a className='catergory-img brand' style={{background:`url(${canon})no-repeat center/100% 100%`}}/>
                     <a className='catergory-img brand' style={{background:`url(${marvel})no-repeat center/100% 100%`}}/>
