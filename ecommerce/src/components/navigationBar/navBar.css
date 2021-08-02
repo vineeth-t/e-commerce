@@ -9,6 +9,7 @@
 .navbar{
     /* font-size:large; */
     position: sticky;
+    z-index: 1;
     background-color: white;
 	top: 0;
 	left: 0;
@@ -18,8 +19,7 @@
     font-weight:1000;
     align-items: center;
     padding:1rem;
-    cursor:pointer;
-  
+    cursor:pointer; 
 }
 .navbar-items:hover{
     transform: scale(1.05);
