@@ -1,0 +1,17 @@
+.item-list{
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.card-overlay{
+    cursor:pointer;
+}
+.btn-add2Cart{
+    color: white;
+    background-color: black;
+    border:1rem;
+    margin-top:1rem;
+    padding: 0.4rem;
+    cursor:pointer;
+}
