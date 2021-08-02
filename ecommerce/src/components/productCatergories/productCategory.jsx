@@ -5,7 +5,6 @@ import apple from './catergoryImages/apple.png'
 import canon from './catergoryImages/canon.jpg'
 import marvel from './catergoryImages/marvel.jpg'
 import sony from './catergoryImages/sony.jpg'
-// import upsa from './catergoryImages/upsa.jpg'
 import './productCatergory.css'
 export function ShoppingCatergory(){
     return(
@@ -31,7 +30,6 @@ export function ShoppingCatergory(){
                     <a className='catergory-img brand' style={{background:`url(${apple})no-repeat center/100% 100%`}}/>
                     <a className='catergory-img brand' style={{background:`url(${canon})no-repeat center/100% 100%`}}/>
                     <a className='catergory-img brand' style={{background:`url(${marvel})no-repeat center/100% 100%`}}/>
-                    {/* <a className='catergory-img' style={{background:`url(${upsa})no-repeat center/100% 100%`}}/> */}
                     <a className='catergory-img brand' style={{background:`url(${sony})no-repeat center/100% 100%`}}/>
                
                 </div>
