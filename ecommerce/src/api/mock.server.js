@@ -3,7 +3,7 @@ import faker from "faker";
 
 faker.seed(123);
 
-export default function setupMockServer() {
+export function setupMockServer() {
   createServer({
     serializers: {
       application: RestSerializer
@@ -15,7 +15,7 @@ export default function setupMockServer() {
 
     routes() {
       this.namespace = "api";
-      this.timing = 3000;
+      this.timing = 1500;
       this.resource("products");
     },
 
