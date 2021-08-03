@@ -21,9 +21,13 @@
     padding:1rem;
     cursor:pointer; 
 }
+.navbar-items{
+    display:flex;
+    flex-direction: column;
+    font-size:smaller;
+}
 .navbar-items:hover{
     transform: scale(1.05);
-   
 }
 .navbar-component a{
   
