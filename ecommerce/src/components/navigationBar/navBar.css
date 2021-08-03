@@ -7,7 +7,6 @@
  
 }
 .navbar{
-    /* font-size:large; */
     position: sticky;
     z-index: 1;
     background-color: white;
@@ -18,13 +17,34 @@
     justify-content: space-between;
     font-weight:1000;
     align-items: center;
-    padding:1rem;
+    padding:0.5rem;
     cursor:pointer; 
 }
 .navbar-items{
     display:flex;
     flex-direction: column;
+    font-size:small;
+    position: relative;
+}
+.navbar-itemNo{
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:1.25rem;
+    height: 1.25rem;
+    top: -0.3rem;
+    left: 1.0rem; 
+    border-radius: 50%;
+    background-color: red;
+    color: white;
     font-size:smaller;
+   
+}
+
+.navbar-wishlist{
+    top: -0.4rem;
+    left: 1.9rem; 
 }
 .navbar-items:hover{
     transform: scale(1.05);
