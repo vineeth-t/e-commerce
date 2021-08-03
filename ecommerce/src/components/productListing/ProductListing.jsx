@@ -2,18 +2,23 @@ import { useEffect, useState } from "react";
 import './products.css'
 import axios from 'axios';
 export function ProductItemsListing(){
-    const[items,setItems]=useState([])
+    const[items,setItems]=useState([]);
+    const[loader,setLoader]=useState(false)
     useEffect(()=>async function(){
+        setLoader(true)
         try{
             const {data,status,statusText} = await axios.get('/api/products');
-            console.log({data})
             setItems(data.products)
         }catch(error){
             console.log(error)
+        }finally{
+        setLoader(false)
+
         }
     }(),[])
 return (
     <div className='item-list'>
+        <h3>{loader&&'loading...'}</h3>
         {items.map(({name,image,price})=>{
             return (
                 <div className="card-overlay">
