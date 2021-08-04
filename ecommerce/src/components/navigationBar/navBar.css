@@ -1,11 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,200;1,300&display=swap');
 
-*{  
-    font-family: 'Montserrat Alternates', sans-serif;
-    box-sizing: border-box;
-    margin:0;
- 
-}
 .navbar{
     position: sticky;
     z-index: 1;

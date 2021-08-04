@@ -3,7 +3,7 @@ export function ProductCard({name,image,price,setCartItem,whereIsProduct}){
         <div className="card-overlay">
         <img style={{width: "251px",
                 height: "251px"}} src={image} alt="cardImage"/> 
-        <h3>{name}</h3>
+        <h4>{name}</h4>
         <small className="Item Item-price"> Rs.{price} </small>
         <s className="Item Item-discount">Rs.{price-0.5*price}</s>
         <span className="Item Item-discountPercentage">(50% off) </span>     
