@@ -8,10 +8,12 @@ function App() {
   const [Route,SetRoute]=useState('Home')
   return (
     <div className="App">
+      <div>
       <NavBar Route={Route} setState={SetRoute}/>
       {Route==='Home'&& <Hero setState={SetRoute}/>}
       {Route==='Products'&&<ProductItemsListing/>}
       {Route==='Cart'&&<Cart/>}
+      </div>
       <Footer/>
     </div>
   );
