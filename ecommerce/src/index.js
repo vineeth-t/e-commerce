@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import {setupMockServer} from './api/mock.server';
-import {CartProvider} from './contexts/cart-context'
+import {StateProvider} from './contexts/state-context'
 setupMockServer();
 ReactDOM.render(
   <React.StrictMode>
-    <CartProvider>
+    <StateProvider>
     <App />
-    </CartProvider>
+    </StateProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

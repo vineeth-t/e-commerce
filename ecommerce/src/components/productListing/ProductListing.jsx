@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import './products.css'
 import axios from 'axios';
-import {useCartContext} from '../../contexts/cart-context';
 import { ProductCard } from "../productCard/productCard";
 export function ProductItemsListing(){
     let whereIsProduct='Product';
-    const {setCartItem}=useCartContext();
     const[items,setItems]=useState([]);
     const[loader,setLoader]=useState(false);
+    
     useEffect(()=>async function(){
         setLoader(true)
         try{
@@ -29,8 +28,7 @@ return (
                name={name}
                image={image}
                price={price}
-             setCartItem={setCartItem}
-             whereIsProduct={whereIsProduct}
+               whereIsProduct={whereIsProduct}
                />
             )
         })}

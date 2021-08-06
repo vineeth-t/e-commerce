@@ -1,9 +1,9 @@
-import { useCartContext } from "../../contexts/cart-context";
+import { useStateContext } from "../../contexts/state-context";
 import './cart.css'
 export function Cart(){
     let whereIsProduct='Cart';
     let totalAmount=0.0;
-    const {cartItems}=useCartContext();
+    const {cartItems}=useStateContext();
     return (
         <div>
             <h3 style={{textAlign:"center",padding:"2rem"}}>My Cart</h3>
