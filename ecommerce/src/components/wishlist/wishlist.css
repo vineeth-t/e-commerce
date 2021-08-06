@@ -1,0 +1,15 @@
+.wishlist-container{
+    text-align: center;
+}
+.wishlist-items{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.wishlist-l{
+    background-color:black;
+    color:white;
+    width:fit-content;
+    padding:0.2em;
+}

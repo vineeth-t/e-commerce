@@ -4,6 +4,7 @@ import {Footer} from './components/index';
 import {ProductItemsListing} from './components/index'
 import { Cart } from './components/index';
 import { useState } from 'react';
+import { Wishlist } from './components/index';
 import './style.css'
 function App() {
   const [Route,SetRoute]=useState('Home')
@@ -14,6 +15,7 @@ function App() {
           {Route==='Home'&& <Hero setState={SetRoute}/>}
           {Route==='Products'&&<ProductItemsListing/>}
           {Route==='Cart'&&<Cart/>}
+          {Route==='Wishlist'&&<Wishlist/>}
       </div>
     <Footer/>
     </div>
