@@ -1,9 +1,9 @@
 import { Hero} from "../../components/heroImage/heroImage";
 import { ShoppingCatergory } from "../../components";
-export function Home({SetRoute}){
+export function Home(){
     return(
         <div>
-                <Hero setState={SetRoute}/>
+                <Hero/>
                 <ShoppingCatergory/>
         </div>
     )

@@ -1,5 +1,5 @@
 import './hero.css';
-export function Hero({setState}){
+export function Hero(setState){
     return (
         <div>
         <div className='heroimg'>

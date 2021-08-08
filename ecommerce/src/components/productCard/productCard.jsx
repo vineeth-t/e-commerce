@@ -1,6 +1,6 @@
 import {useStateContext} from '../../contexts/state-context';
 import axios from 'axios';
-import { deleteItem } from '../wishlist/wishlist';
+import { deleteItem } from '../../Routes/Wishlist/wishlistManagement';
 
 export function ProductCard({productItem,whereIsProduct}){
     const {id,name,image,price}=productItem;

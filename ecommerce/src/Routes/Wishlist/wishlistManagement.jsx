@@ -1,6 +1,6 @@
 import {useStateContext} from '../../contexts/state-context';
 import './wishlist.css'
-import { ProductCard } from '../productCard/productCard';
+import { ProductCard } from '../../components';
 
 export function deleteItem(id,setWishlistItems) {  
     setWishlistItems((items)=>items.filter((item) => item.id !== id));
@@ -16,18 +16,16 @@ export function Wishlist(){
             <div className='wishlist-items'>
             {wishlistItems.map((productItem)=>{
                 return(
-                   <div >
+                   <div>
                         <ProductCard 
-                        key={productItem.id}
-                            productItem={productItem}
+                             key={productItem.id}
+                             productItem={productItem}
                              whereIsProduct={whereIsProduct}
                         />
                     </div>
                 )
-               
             })}
-            </div>
-           
+            </div>           
         </div>
     )
 }
