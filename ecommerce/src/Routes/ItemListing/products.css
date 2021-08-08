@@ -1,3 +1,4 @@
+@import '../../style.css';
 .item-list{
     display:flex;
     flex-wrap: wrap;
@@ -8,8 +9,8 @@
     cursor:pointer;
 }
 .btn-add2Cart{
-    color: white;
-    background-color: black;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
     border:1rem;
     margin-top:1rem;
     padding: 0.4rem;

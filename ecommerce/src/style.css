@@ -5,6 +5,11 @@
     margin:0;
  
 }
+:root{
+    --primary-color:white;
+    --secondary-color:black;
+    --no-of-items-color:red;
+}
 .App-Container{
 	min-height: 80vh;
 }
