@@ -27,7 +27,7 @@
     padding:1rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 .cart-holder{
     display: flex;
@@ -37,4 +37,33 @@
     display:flex;
     flex-direction: column;
     padding:1rem;
+}
+.btn-primary{
+    width:1.5rem;
+    height:2rem ;
+    color:white;
+    background-color: black;
+    border-radius: 20%;
+}
+.button-qty{
+    display: flex;
+}
+.quantity{
+    padding: 0.4rem;
+}
+.btn-add2Cart:hover{
+    font-weight: 600;
+    color:white;
+}
+.btn-wishlist{
+    font-weight: 600;
+    cursor:pointer;
+    color: black;
+    background-color:white;
+    padding: 0.2em;
+    border: 1px dotted black;
+}
+.btn-wishlist:hover{
+    color:white;
+    background-color: black;
 }

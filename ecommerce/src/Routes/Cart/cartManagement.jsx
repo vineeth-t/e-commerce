@@ -1,25 +1,24 @@
 import { useStateContext } from "../../contexts/state-context";
 import './cart.css'
+import { deleteItem } from "../Wishlist/wishlistManagement";
 export function Cart(){
     let totalAmount=0.0;
-    const {cartItems}=useStateContext();
+    const {cartItems,setCartItem,setWishlistItems}=useStateContext();
     return (
         <div>
             <h3 style={{textAlign:"center",padding:"2rem"}}>My Cart</h3>
             <div class='cart-holder'>
-                        <div>
-                                {cartItems.length>=1&&
-                                    <div className='address-container'>             
-                                            <small className='address-details'>
-                                            <h6>Deliver To:</h6>
-                                                Alex carey <br/>
-                                                <small>H.No-4-1/40, Indra Nagar, Bangolre, 5000001</small>
-                                            </small>
-                                    </div>
-                                }
-                                    {cartItems.map(({name,image,price})=>{
+                <div>
+                     {cartItems.length>=1&&
+                        <div className='address-container'>             
+                              <small className='address-details'>
+                                    <h6>Deliver To:</h6> Alex carey <br/>
+                                    <small>H.No-4-1/40, Indra Nagar, Bangolre, 5000001</small>
+                                </small>
+                        </div>
+                      }
+                     {cartItems.map(({id,name,image,price})=>{
                                         totalAmount=totalAmount +  parseInt( price, 10 );
-                                        console.log({price})
                                     return (
                                     <div class='cart-container'>
                                                 <div className='cart-item-container' >   
@@ -28,12 +27,16 @@ export function Cart(){
                                                             <div>
                                                             <h5>{name}</h5>
                                                             <h6>Rs/-{price}</h6>
-                                                            </div>
                                                             
-                                                            <div>
-                                                                <button className=''>+</button>0
-                                                                <button>-</button>
                                                             </div>
+                                                            <div className='button-qty'>
+                                                                <button className='btn-primary'>-</button>
+                                                               <span className='quantity'>1</span> 
+                                                                <button className='btn-primary'>+</button>
+                                                            </div>
+                                                           <div>
+                                                           <button className='btn-wishlist' onClick={()=>deleteItem({id,name,image,price},setWishlistItems,setCartItem,"Cart")}>Move to Wishlist</button>
+                                                               </div>
                                                         </div> 
                                                     </div>   
                                     

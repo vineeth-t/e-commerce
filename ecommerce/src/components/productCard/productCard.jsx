@@ -6,10 +6,13 @@ export function ProductCard({productItem,whereIsProduct}){
     const {id,name,image,price}=productItem;
     const {setWishlistItems,setCartItem}=useStateContext();
     async function whishList(product)
-         {
-            setWishlistItems((item)=>[...item,product])
-            const response = await axios.post("/api/wishes", { wish: product });
-        
+         {           
+            setWishlistItems(
+                (items)=>(
+                    items.some((item)=>item.id===product.id))?
+                    [...items]:[...items,product])
+                   
+            const response = await axios.post("/api/wishes", { wish: product });       
         }
     return (
         <div className="card-overlay">
@@ -31,7 +34,9 @@ export function ProductCard({productItem,whereIsProduct}){
                 <br/>
                
                 <button className='btn-add2Cart' 
-                        onClick={()=>setCartItem((item)=>[...item,{id,name,image,price}])}>
+                        onClick={()=> setCartItem(
+                                         (items)=>(items.some((item)=>item.id===id))?
+                                         [...items]:[...items,{id,name,image,price}])}>
                         Add to cart
                     </button>
                  
