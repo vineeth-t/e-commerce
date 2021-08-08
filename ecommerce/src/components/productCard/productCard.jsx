@@ -29,7 +29,7 @@ export function ProductCard({productItem,whereIsProduct}){
                         </button>
                  }
              {whereIsProduct==='inWishlist' &&
-                     <button onClick={()=>deleteItem(id,setWishlistItems)} className="wishlist-l">X</button>
+                     <button onClick={()=>deleteItem({id,name,image,price},setWishlistItems)} className="wishlist-l">X</button>
              }
                 <br/>
                

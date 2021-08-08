@@ -3,7 +3,7 @@ import './wishlist.css'
 import { ProductCard } from '../../components';
 
 export function deleteItem(product,setWishlistItems,setCartItem,whereAmI) {  
-    if(whereAmI='Cart'){
+    if(whereAmI==='Cart'){
         setCartItem((items)=>items.filter((item) => item.id !== product.id));
         setWishlistItems(
             (items)=>(
