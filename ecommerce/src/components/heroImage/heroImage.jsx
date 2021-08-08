@@ -1,5 +1,4 @@
 import './hero.css';
-import {ShoppingCatergory} from '../index'
 export function Hero({setState}){
     return (
         <div>
@@ -11,7 +10,6 @@ export function Hero({setState}){
            <p>Offers On All Selected Items*</p>
            <button className='btn-shp' onClick={()=>setState('Products')}>Shop Now</button>
         </div>
-        <ShoppingCatergory/>
         </div>
     )
 }

@@ -1,7 +1,6 @@
 import { useStateContext } from "../../contexts/state-context";
 import './cart.css'
 export function Cart(){
-    let whereIsProduct='Cart';
     let totalAmount=0.0;
     const {cartItems}=useStateContext();
     return (

@@ -3,7 +3,7 @@ import { useStateContext } from "../../contexts/state-context";
 import { ProductCard } from "../productCard/productCard";
 export function ProductItemsListing(){
    const{loader,items}= useStateContext()
-    let whereIsProduct='Product';
+    let whereIsProduct='inProductPage';
     
 return (
     <div className='item-list'>

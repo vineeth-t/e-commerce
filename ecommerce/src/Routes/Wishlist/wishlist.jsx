@@ -7,7 +7,7 @@ export function deleteItem(id,setWishlistItems) {
 
 };
 export function Wishlist(){
-    let whereIsProduct='Wishlist';
+    let whereIsProduct='inWishlist';
 
    const {wishlistItems}=useStateContext();
     return(
