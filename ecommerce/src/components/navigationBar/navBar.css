@@ -14,9 +14,7 @@
     padding:0.5rem;
     cursor:pointer; 
 }
-.navbar-menu{
-    display: none;
-}
+
 .navbar-items{
     display:flex;
     flex-direction: column;
@@ -37,7 +35,10 @@
     color: var(--primary-color);
     font-size:smaller;
 }
-
+.navbar-component{
+    display: flex;
+    align-items: center;
+}
 .navbar-wishlist{
     top: -0.4rem;
     left: 1.9rem; 
@@ -75,7 +76,7 @@ align-items: center;
     background-color: var(--secondary-color);
     padding:0.75rem;
 }
-.navbar-right{
+.navbar-right-of-mobile{
     display: none;
 }
 .hambug{
@@ -102,7 +103,7 @@ align-items: center;
     .navbar-menu{
         display: flex;
     }
-    .navbar-right{
+    .navbar-right-of-mobile{
         display: flex;
 
     }
