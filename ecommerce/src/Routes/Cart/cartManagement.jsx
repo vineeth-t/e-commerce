@@ -6,7 +6,13 @@ export function Cart(){
     const {cartItems,setCartItem,setWishlistItems}=useStateContext();
     return (
         <div>
-            <h3 style={{textAlign:"center",padding:"2rem"}}>My Cart</h3>
+            <div style={{textAlign:"center",padding:"1rem"}}>
+            <h3 >My Cart</h3>
+            {
+                cartItems.length===0 && <h5 style={{padding:"1rem"}}>Your cart is empty</h5>
+            }
+            </div>
+            
             <div class='cart-holder'>
                 <div>
                      {cartItems.length>=1&&

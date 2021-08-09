@@ -1,7 +1,7 @@
 import {useStateContext} from '../../contexts/state-context';
 import axios from 'axios';
 import { deleteItem } from '../../Routes/Wishlist/wishlistManagement';
-
+import './card.css'
 export function ProductCard({productItem,whereIsProduct}){
     const {id,name,image,price}=productItem;
     const {setWishlistItems,setCartItem}=useStateContext();

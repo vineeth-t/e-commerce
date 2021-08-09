@@ -1,0 +1,44 @@
+:root{
+    --item-name-color:#535766;
+    --box-shadow-card:rgba(0, 0, 0, 0.24);
+    --discount:red;
+    --badge-background: rgb(124, 219, 80);
+    --font-color:whitesmoke;
+}
+.Item{
+    font-size: 0.75rem;
+    font-weight:300;
+}
+
+.Item-name{
+    margin: 0.5rem 0 0.5rem 0;
+    color:var(--item-name-color);
+}
+.Item-price{
+    font-size: 1rem;
+    font-weight: 800;
+}
+.Item-discountPercentage{
+    font-weight: 800;
+    color :var( --discount);
+    padding-left:0.2rem ;
+}
+.card-overlay{
+    position: relative;
+    width:fit-content;
+    box-shadow: var(--box-shadow-card) 0px 3px 8px;
+    padding: 1rem;
+    margin: 1rem;
+    font-size:1rem;
+    font-weight:400;
+}
+.wishlist-l{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background-color: black;
+    border: none;
+    top:1.5rem;
+    right: 1.5rem;
+}
