@@ -9,6 +9,10 @@
     font-size: 0.75rem;
     font-weight:300;
 }
+.card-img{
+   width: 251px;
+   height: 251px
+}
 
 .Item-name{
     margin: 0.5rem 0 0.5rem 0;
@@ -41,4 +45,14 @@
     border: none;
     top:1.5rem;
     right: 1.5rem;
+}
+@media screen and (max-width:768px) {
+    .card-overlay{
+        width:10em;
+        height:19em
+    }
+    .card-img{
+        width: 130px;
+        height: 150px
+    }
 }

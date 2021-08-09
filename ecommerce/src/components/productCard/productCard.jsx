@@ -16,8 +16,7 @@ export function ProductCard({productItem,whereIsProduct}){
         }
     return (
         <div className="card-overlay">
-                <img style={{width: "251px",
-                        height: "251px"}} src={image} alt="cardImage"/> 
+                <img className='card-img' src={image} alt="cardImage"/> 
                 <h4>{name}</h4>
                 <small className="Item Item-price"> Rs.{price} </small>
                 <s className="Item Item-discount">Rs.{price-0.5*price}</s>
