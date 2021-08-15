@@ -3,8 +3,8 @@ import { ShoppingCatergory } from "../../components";
 export function Home(){
     return(
         <div>
-                <Hero/>
-                <ShoppingCatergory/>
+           <Hero/>
+            <ShoppingCatergory/>
         </div>
     )
 }

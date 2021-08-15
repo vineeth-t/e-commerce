@@ -9,7 +9,8 @@ return (
         <h3>{loader&&'loading...'}</h3>
         {items.map((productItem)=>{
             return (
-               <ProductCard 
+               <ProductCard
+                key={productItem.id}
                productItem={productItem}
                whereIsProduct={whereIsProduct}
                />

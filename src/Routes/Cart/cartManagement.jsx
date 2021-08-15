@@ -30,7 +30,7 @@ export function Cart(){
                                     return (
                                     <div className='cart-container'>
                                                 <div className='cart-item-container' >   
-                                                        <img className='cart-item-img' src={image}/>
+                                                        <img className='cart-item-img' src={image} alt='Item-Image'/>
                                                         <div className='cart-item-details'>
                                                             <div>
                                                             <h5>{name}</h5>
