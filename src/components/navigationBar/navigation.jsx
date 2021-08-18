@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useStateContext } from '../../contexts/state-context';
 import './navBar.css';
+import { Toast } from '..';
 export function NavBar({Route,setState}){
-  const{cartItems,wishlistItems}=useStateContext();
-  const[hambug,sethambug]=useState('hambug')
-    return (
-      
+  const{cartItems,wishlistItems,toast,setToast}=useStateContext();
+  const[hambug,sethambug]=useState('hambug');
+    return (  
     <nav className='navbar'>
+       {toast==='addtoWislist' &&   <Toast msg={'Added To WishList'} setToast={setToast}/>}
+       {toast==='Removed From Wishlist' &&   <Toast msg={'Removed From Wishlist'} setToast={setToast}/>}
           <div className='navbar-right-of-mobile'>
                 <button className='nav-hambug' onClick={()=>sethambug('hambug-view')}>
                 <svg width="1.5em" height="2em" viewBox="0 0 48 48"><g fill="none" stroke="#000" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><path d="M42 19H6M42 9H6M42 29H6M42 39H6"></path></g></svg>

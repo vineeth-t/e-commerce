@@ -10,14 +10,11 @@ export function deleteItem(product,setWishlistItems,setCartItem,whereAmI) {
                 items.some((item)=>item.id===product.id))?
                 [...items]:[...items,product])
     }else{
-        setWishlistItems((items)=>items.filter((item) => item.id !== product.id));
+        setWishlistItems((items)=>items.filter((item) => item.id !== product.id))
     }
-    
-
 };
 export function Wishlist(){
     let whereIsProduct='inWishlist';
-
    const {wishlistItems}=useStateContext();
     return(
         <div className='wishlist-container'>

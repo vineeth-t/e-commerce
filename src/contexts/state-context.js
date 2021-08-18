@@ -1,15 +1,17 @@
-import {useEffect, createContext, useContext, useState } from "react";
+import {useEffect, createContext, useContext, useState, useReducer } from "react";
 import axios from 'axios';
 export const StateContext= createContext();
 export function StateProvider({children}){
+    const[state,dispatch]=useReducer(reducer)
     const[items,setItems]=useState([]);
     const[loader,setLoader]=useState(false);
     const[cartItems,setCartItem]=useState([]);
-    const[wishlistItems,setWishlistItems]=useState([])
+    const[wishlistItems,setWishlistItems]=useState([]);
+    const[toast,setToast]=useState('');
     useEffect(()=>async function(){
         setLoader(true)
         try{
-            const {data,status,statusText} = await axios.get('/api/products');
+            const {data} = await axios.get('/api/products');
             setItems(data.products)
         }catch(error){
             console.log(error)
@@ -20,7 +22,7 @@ export function StateProvider({children}){
     }(),[])
     useEffect(()=>async function(){
         try{
-            const {data,status,statusText} = await axios.get('/api/wishes');
+            const {data} = await axios.get('/api/wishes');
             console.log({data})
             setWishlistItems(data.wishes)
         }catch(error){
@@ -28,7 +30,7 @@ export function StateProvider({children}){
         }
     }(),[])
     return(
-        <StateContext.Provider value={{loader,items,cartItems,setCartItem,wishlistItems,setWishlistItems}}>
+        <StateContext.Provider value={{toast,setToast,loader,items,cartItems,setCartItem,wishlistItems,setWishlistItems}}>
             {children}
         </StateContext.Provider>
     )

@@ -1,9 +1,11 @@
 @import '../../style.css';
 .item-list{
+    position: relative;
     display:flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    margin-top:1rem;
 }
 .card-overlay{
     cursor:pointer;
