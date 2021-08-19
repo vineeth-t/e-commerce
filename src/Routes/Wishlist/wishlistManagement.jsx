@@ -15,18 +15,18 @@ export function deleteItem(product,setWishlistItems,setCartItem,whereAmI) {
 };
 export function Wishlist(){
     let whereIsProduct='inWishlist';
-   const {wishlistItems}=useStateContext();
+   const {state}=useStateContext();
     return(
         <div className='wishlist-container'>
             <div style={{textAlign:"center",padding:"1rem"}}>
             <h3>Wishlist</h3>
             {
-                wishlistItems.length===0 && <h5 style={{padding:"1rem"}}>Aww, wishlist is empty</h5>
+                state.wishListItems.length===0 && <h5 style={{padding:"1rem"}}>Aww, wishlist is empty</h5>
             }
             </div>
            
             <div className='wishlist-items'>
-            {wishlistItems.map((productItem)=>{
+            {state.wishListItems.map((productItem)=>{
                 return(
                    <div>
                         <ProductCard 
