@@ -2,19 +2,7 @@ import {useStateContext} from '../../contexts/state-context';
 import './wishlist.css'
 import { ProductCard } from '../../components';
 
-export function deleteItem(product,setWishlistItems,setCartItem,whereAmI) {  
-    if(whereAmI==='Cart'){
-        setCartItem((items)=>items.filter((item) => item.id !== product.id));
-        setWishlistItems(
-            (items)=>(
-                items.some((item)=>item.id===product.id))?
-                [...items]:[...items,product])
-    }else{
-        setWishlistItems((items)=>items.filter((item) => item.id !== product.id))
-    }
-};
 export function Wishlist(){
-    let whereIsProduct='inWishlist';
    const {state}=useStateContext();
     return(
         <div className='wishlist-container'>
@@ -32,7 +20,7 @@ export function Wishlist(){
                         <ProductCard 
                              key={productItem.id}
                              productItem={productItem}
-                             whereIsProduct={whereIsProduct}
+                           
                         />
                     </div>
                 )

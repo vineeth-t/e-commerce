@@ -10,7 +10,7 @@ function App() {
       <div className='App-Container'>
           <NavBar Route={Route} setState={SetRoute}/>
           {Route==='Home'&& <Home/>}
-          {Route==='Products'&&<ProductItemsListing/>}
+          {Route==='Products'&&<ProductItemsListing  setState={SetRoute}/>}
           {Route==='Cart'&&<Cart/>}
           {Route==='Wishlist'&&<Wishlist/>}
       </div>
