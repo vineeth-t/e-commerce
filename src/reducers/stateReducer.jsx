@@ -1,19 +1,26 @@
-import { cartItems,wishListItems } from "../contexts/state-context";
 export function stateReducer(state,action){
     switch(action.type){
         case 'Increment':
-            return {...state,quantity:state.quantity+1}
+            return {...state,
+                        cartItems:
+                            state.cartItems.map(
+                                    (item)=>item.id===action.productID?
+                                    ({...item,quantity: item.quantity + 1}):item)}
         case 'Decrement':
-            return {...state,quantity:state.quantity-1}
+            return {...state,
+                cartItems:
+                    state.cartItems.map(
+                            (item)=>item.id===action.productID?
+                            ({...item,quantity: item.quantity - 1}):item)}
         case 'Add2Cart':
             return {
                 ...state,
-                cartItems: [...cartItems, action.product]
+                cartItems: [...state.cartItems, action.product]
               };
         case 'Add2Wishlist':
                 return {
                     ...state,
-                    wishListItems: [...wishListItems, action.product]
+                    wishListItems: [...state.wishListItems, action.product]
                   };
         case 'deleteProduct':
                     return {

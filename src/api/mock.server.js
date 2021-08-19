@@ -27,7 +27,8 @@ export function setupMockServer() {
           id: faker.datatype.uuid(),
           name: faker.commerce.productName(),
           image: faker.random.image(),
-          price: faker.commerce.price()
+          price: faker.commerce.price(),
+          quantity:1
         });
       });
       [...Array(0)].forEach((_) => {
@@ -35,7 +36,8 @@ export function setupMockServer() {
           id: faker.random.alphaNumeric(),
           name: faker.commerce.productName(),
           image: faker.random.image(),
-          price: faker.commerce.price()
+          price: faker.commerce.price(),
+          quantity:1
         });
       });
     }

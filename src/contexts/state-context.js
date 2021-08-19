@@ -3,7 +3,7 @@ import {stateReducer} from '../reducers/stateReducer'
 import axios from 'axios';
 export const StateContext= createContext();
 export function StateProvider({children}){
-    const[state,dispatch]=useReducer(stateReducer,{quantity:1,cartItems,wishListItems})
+    const[state,dispatch]=useReducer(stateReducer,{cartItems,wishListItems})
     const[items,setItems]=useState([]);
     const[loader,setLoader]=useState(false);
     const[toast,setToast]=useState('');
