@@ -41,7 +41,7 @@ return (
                                                                 <button onClick={()=>dispatch({type:"Increment",productID:id})} className='btn-primary'>+</button>
                                                             </div>
                                                             <div>
-                                                                 <button className='btn-wishlist' onClick={()=>dispatch({type:'Add2Wishlist',product:{id,name,image,price}})}>Move to Wishlist</button>
+                                                                 <button className='btn-wishlist' onClick={()=>dispatch({type:'Move2Wishlist',product:{id,name,image,price}})}>Move to Wishlist</button>
                                                             </div>
                                                         </div> 
                                                     </div> 

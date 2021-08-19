@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "react"
+import { useStateContext } from "../../contexts/state-context";
 import './toast.css'
-export function Toast({msg,setToast}){
+export function Toast({msg}){
+    const{dispatch}=useStateContext();
     useEffect(()=>{
         let timeOut=setTimeout(()=>{
-            setToast('')
+         dispatch({type:'removeToast'})
         },1000)
         return()=>{
             clearTimeout(timeOut)

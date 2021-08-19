@@ -15,18 +15,29 @@ export function stateReducer(state,action){
         case 'Add2Cart':
             return {
                 ...state,
-                cartItems: [...state.cartItems, action.product]
+                cartItems: [...state.cartItems, action.product],toast:'addtoCart'
               };
         case 'Add2Wishlist':
                 return {
                     ...state,
-                    wishListItems: [...state.wishListItems, action.product]
+                    wishListItems: [...state.wishListItems, action.product],toast:'addtoWislist'
                   };
-        case 'deleteProduct':
+        case 'removeProductFromwishlist':
                     return {
                         ...state,
-                        wishListItems: state.wishListItems.filter((item)=>item.id!=action.product.id)
+                        wishListItems: state.wishListItems.filter((item)=>item.id!==action.product.id),toast:'removedFromWislist'
                       };
+        case 'removeToast':
+            return{
+                ...state,toast:''
+            }
+            case 'Move2Wishlist':
+                if(state.wishListItems.some((item)=>item.id===action.product.id)){
+                    return{...state,toast:'alreadyInWishlist'}
+                }
+                return{
+                    ...state,wishListItems:[...state.wishListItems, action.product],toast:'addtoWislist'
+                }
     }
 
 }

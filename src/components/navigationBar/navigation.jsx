@@ -2,13 +2,15 @@ import { useState } from 'react';
 import { useStateContext } from '../../contexts/state-context';
 import './navBar.css';
 import { Toast } from '..';
-export function NavBar({Route,setState}){
-  const{state,toast,setToast}=useStateContext();
+export function NavBar({setState}){
+  const{state:{toast,wishListItems,cartItems}}=useStateContext();
   const[hambug,sethambug]=useState('hambug');
     return (  
     <nav className='navbar'>
-       {toast==='addtoWislist' &&   <Toast msg={'Added To WishList'} setToast={setToast}/>}
-       {toast==='Removed From Wishlist' &&   <Toast msg={'Removed From Wishlist'} setToast={setToast}/>}
+        {toast==='addtoCart' &&   <Toast msg={'Added To Cart'}/>}
+       {toast==='addtoWislist' &&   <Toast msg={'Added To WishList'}/>}
+       {toast==='alreadyInWishlist' &&   <Toast msg={'Item Already in Wishlist'}/>}
+       {toast==='removedFromWislist' &&   <Toast msg={'Item removed from in Wishlist'}/>}
           <div className='navbar-right-of-mobile'>
                 <button className='nav-hambug' onClick={()=>sethambug('hambug-view')}>
                 <svg width="1.5em" height="2em" viewBox="0 0 48 48"><g fill="none" stroke="#000" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><path d="M42 19H6M42 9H6M42 29H6M42 39H6"></path></g></svg>
@@ -44,12 +46,12 @@ export function NavBar({Route,setState}){
             </div>
             <div className='navbar-items' onClick={()=>setState('Wishlist')}>
                 <svg width="2em" height="2em" viewBox="0 0 24 24"><path d="M4.244 12.252a4.25 4.25 0 1 1 6.697-5.111h1.118a4.25 4.25 0 1 1 6.697 5.111L11.5 19.51l-7.256-7.257zm15.218.71A5.25 5.25 0 1 0 11.5 6.167a5.25 5.25 0 1 0-7.962 6.795l7.962 7.961l7.962-7.96z" fill="currentColor"></path></svg>
-                <small className='navbar-itemNo navbar-wishlist'>{state.wishListItems.length}</small>
+                <small className='navbar-itemNo navbar-wishlist'>{wishListItems.length}</small>
                 <label>Wishlist</label>          
             </div>
             <div className='navbar-items' onClick={()=>setState('Cart')}>
                 <svg width="2em" height="2em" viewBox="0 0 24 24"><path d="M16 18a2 2 0 1 1 0 4a2 2 0 0 1 0-4zm0 1a1 1 0 1 0 0 2a1 1 0 0 0 0-2zm-9-1a2 2 0 1 1 0 4a2 2 0 0 1 0-4zm0 1a1 1 0 1 0 0 2a1 1 0 0 0 0-2zM18 6H4.273l2.547 6H15a.994.994 0 0 0 .8-.402l3-4h.001A1 1 0 0 0 18 6zm-3 7H6.866L6.1 14.56L6 15a1 1 0 0 0 1 1h11v1H7a2 2 0 0 1-1.75-2.97l.72-1.474L2.338 4H1V3h2l.849 2H18a2 2 0 0 1 1.553 3.26l-2.914 3.886A1.998 1.998 0 0 1 15 13z" fill="currentColor"></path></svg>
-                <small className='navbar-itemNo'>{state.cartItems.length}</small>
+                <small className='navbar-itemNo'>{cartItems.length}</small>
                 <label>Cart</label>   
             </div> 
             {/* <div>
