@@ -6,7 +6,7 @@ export function Toast({msg}){
     useEffect(()=>{
         let timeOut=setTimeout(()=>{
          dispatch({type:'removeToast'})
-        },1000)
+        },2000)
         return()=>{
             clearTimeout(timeOut)
         } 

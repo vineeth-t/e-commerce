@@ -7,6 +7,11 @@ export function stateReducer(state,action){
                                     (item)=>item.id===action.productID?
                                     ({...item,quantity: item.quantity + 1}):item)}
         case 'Decrement':
+            if(state.cartItems.some((item)=>item.quantity<=1)){
+                return {
+                    ...state,cartItems:state.cartItems.filter((item)=>item.id!==action.productID),toast:'removedFromCart'
+                }
+            }
             return {...state,
                 cartItems:
                     state.cartItems.map(
