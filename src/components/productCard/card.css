@@ -13,7 +13,15 @@
    width: 251px;
    height: 251px
 }
-
+.badgeOnCard{
+    font-size: 0.75rem;
+    position: absolute;
+    padding:0.5rem;
+    top:3rem;
+    left:1rem;
+    background-color:black;
+    color:white; 
+}
 .Item-name{
     margin: 0.5rem 0 0.5rem 0;
     color:var(--item-name-color);
@@ -31,6 +39,16 @@
     position: relative;
     width:fit-content;
     box-shadow: var(--box-shadow-card) 0px 3px 8px;
+    padding: 1rem;
+    margin: 1rem;
+    font-size:1rem;
+    font-weight:400;
+}
+.card-OutOfStock{
+    position: relative;
+    width:fit-content;
+    box-shadow: var(--box-shadow-card) 0px 3px 8px;
+    filter: blur(2px);
     padding: 1rem;
     margin: 1rem;
     font-size:1rem;

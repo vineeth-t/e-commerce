@@ -28,6 +28,8 @@ export function setupMockServer() {
           name: faker.commerce.productName(),
           image: faker.random.image(),
           price: faker.commerce.price(),
+          inStock: faker.datatype.boolean(),
+          fastDelivery: faker.datatype.boolean(),
           quantity:1
         });
       });
