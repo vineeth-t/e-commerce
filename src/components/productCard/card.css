@@ -65,7 +65,11 @@
     right: 1.5rem;
 }
 @media screen and (max-width:768px) {
-    .card-overlay{
+    .card-overlay {
+        width:10em;
+        height:19em
+    }
+    .card-OutOfStock{
         width:10em;
         height:19em
     }

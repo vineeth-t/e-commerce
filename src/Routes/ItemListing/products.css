@@ -1,16 +1,10 @@
 @import '../../style.css';
 .item-page{
 display: grid;
-grid-template-columns: 0.1fr 1fr;
-grid-template-areas: "filter item item" ;
-}
-.item-filter{
-    position: fixed;
-    grid-area: "filter";
+grid-template-columns: auto auto auto auto;
+
 }
 .item-list{
-    grid-area: "item";
-    position: relative;
     display:flex;
     flex-wrap: wrap;
     align-items: center;

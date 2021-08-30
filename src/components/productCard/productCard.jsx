@@ -36,7 +36,8 @@ export function ProductCard({productItem,setState}){
                     </button>
                 }
         </div>
-        {!inStock&& <div className='card-OutOfStock'>
+        {!inStock&& 
+        <div className='card-OutOfStock'>
                 <img className='card-img' src={image} alt="cardImage"/> 
                 <h4>{name}</h4>
                 <small className="Item Item-price"> Rs.{price} </small>
@@ -57,9 +58,9 @@ export function ProductCard({productItem,setState}){
                         </button>       
                     }
                 <br/>
-               
-                <h3>Out Of Stock</h3>
-        </div>}
+                <h4>Out Of Stock</h4>
+             </div>
+             }
         </>
     )
 }

@@ -18,15 +18,19 @@ export function getFilterData(productList,{
     toggleInventory,
     showJCAssured
    }){
-    if(showJCAssured){
-        return productList.filter((product)=>product.fastDelivery===true)
+       console.log({  showJCAssured,toggleInventory
+        })
+    if(showJCAssured===true && toggleInventory===true ){
+        return productList.filter((product)=>product.fastDelivery===true && product.inStock===false)
+
+    } else if(showJCAssured===true && toggleInventory===false ){
+        return productList.filter((product)=>product.fastDelivery===true && product.inStock===true)
+    }else if(showJCAssured===false && toggleInventory===false ){
+        return productList.filter((product)=> product.inStock===true)
     }
-    if(toggleInventory){
-        return productList
-    }else if(toggleInventory===false){
-      return productList.filter((product)=>product.inStock===true)
+    else {
+      return productList
     }
-    return productList
 }
 export function getSortedData(productList,sortBy){
     if(sortBy==='HIGH_TO_LOW'){
