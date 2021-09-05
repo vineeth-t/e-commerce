@@ -1,5 +1,8 @@
 
 @import '../../style.css';
+.navLink-active{
+    background-color: black;
+}
 .navbar{
     position: sticky;
     z-index: 1;
@@ -50,6 +53,8 @@
     display: inline-block;
     text-align: center;
     margin-left:2rem;
+    text-decoration: none;
+    color:black;
 }
 .navbar-theme{  
     border:transparent;
@@ -60,9 +65,12 @@
     justify-content: center;
     align-items: center;
 }
-.navbar-left div{
+
+.navbar-left a{
     margin-left:2rem;
     margin-right: 0.4rem;
+    text-decoration: none;
+    color: black;
 }
 .navbar-items{
 transition: transform 0.2s ease-in;
@@ -75,6 +83,7 @@ align-items: center;
     color:var(--primary-color);
     background-color: var(--secondary-color);
     padding:0.75rem;
+    text-decoration: none;
 }
 .navbar-right-of-mobile{
     display: none;

@@ -1,18 +1,19 @@
 import {NavBar} from './components/index';
 import {Footer} from './components/index';
 import { Cart, Home,Wishlist,ProductItemsListing } from './Routes/index';
-import { useState } from 'react';
+import { Route, Routes } from "react-router-dom";
 import './style.css'
 function App() {
-  const [Route,SetRoute]=useState('Home')
   return (
     <div className="App">
       <div className='App-Container'>
-          <NavBar Route={Route} setState={SetRoute}/>
-          {Route==='Home'&& <Home/>}
-          {Route==='Products'&&<ProductItemsListing  setState={SetRoute}/>}
-          {Route==='Cart'&&<Cart/>}
-          {Route==='Wishlist'&&<Wishlist/>}
+          <NavBar/>
+          <Routes>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/products' element={<ProductItemsListing />}/>
+            <Route path='/cart' element={<Cart/>}/>
+            <Route path='/wishlist' element={<Wishlist/>}/>
+            </Routes>
       </div>
     <Footer/>
     </div>
