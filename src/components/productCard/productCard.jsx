@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {useStateContext} from '../../contexts/state-context';
 import './card.css'
-export function ProductCard({productItem,setState}){
+export function ProductCard({productItem}){
     const {id,name,image,price,quantity,fastDelivery,inStock}=productItem;
     const {state:{cartItems,wishListItems},dispatch}=useStateContext();
     return (
@@ -28,7 +28,7 @@ export function ProductCard({productItem,setState}){
                     }
                 <br/>
                  {cartItems.some((item)=>item.id===id) ?
-                    <button className='btn-add2Cart' onClick={()=>setState('Cart')}>
+                    <button className='btn-add2Cart'>
                         Go to Cart
                     </button> :
                     <button className='btn-add2Cart' onClick={()=>dispatch({type:'Add2Cart',product:{id,name,image,price,quantity}})}>

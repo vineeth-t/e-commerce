@@ -11,26 +11,26 @@ export function ShoppingCatergory(){
         <div>
             <h2 className='categories-heading'>Featured Categories</h2>
             <div className='item-catergories'>
-                    <a className='catergory-img' style={{background:`url(${camera})no-repeat center/100% 100%`}}>
+                    <div className='catergory-img' style={{background:`url(${camera})no-repeat center/100% 100%`}}>
                         <span>Cameras</span>
                         <span>Flat 30%</span>
-                    </a>
-                    <a className='catergory-img' style={{background:`url(${fashion})no-repeat center/100% 100%`}}>
+                    </div>
+                    <div className='catergory-img' style={{background:`url(${fashion})no-repeat center/100% 100%`}}>
                     <span>Tshirts</span>
                         <span>Buy 3 @ Rs/-999</span>
-                    </a>
-                    <a className='catergory-img' style={{background:`url(${music})no-repeat center/100% 100%`}}>
+                    </div>
+                    <div className='catergory-img' style={{background:`url(${music})no-repeat center/100% 100%`}}>
                     <span>Earpods</span>
                         <span>1+1 Offer(Limted Offer)</span>
-                    </a>
+                    </div>
             </div>
             <div>
                 <h2 className='categories-heading'>Featured Brands</h2>
                 <div className='brand-types'>
-                    <a className='catergory-img brand' style={{background:`url(${apple})no-repeat center/100% 100%`}}/>
-                    <a className='catergory-img brand' style={{background:`url(${canon})no-repeat center/100% 100%`}}/>
-                    <a className='catergory-img brand' style={{background:`url(${marvel})no-repeat center/100% 100%`}}/>
-                    <a className='catergory-img brand' style={{background:`url(${sony})no-repeat center/100% 100%`}}/>
+                    <div className='catergory-img brand' style={{background:`url(${apple})no-repeat center/100% 100%`}}/>
+                    <div className='catergory-img brand' style={{background:`url(${canon})no-repeat center/100% 100%`}}/>
+                    <div className='catergory-img brand' style={{background:`url(${marvel})no-repeat center/100% 100%`}}/>
+                    <div className='catergory-img brand' style={{background:`url(${sony})no-repeat center/100% 100%`}}/>
                
                 </div>
             </div>

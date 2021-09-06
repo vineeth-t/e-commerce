@@ -1,5 +1,6 @@
 import './hero.css';
-export function Hero(setState){
+import { NavLink } from 'react-router-dom';
+export function Hero(){
     return (
         <div>
             <div className='heroimg'>
@@ -8,7 +9,10 @@ export function Hero(setState){
             <h1>Big Billon Day's are back</h1>
             <small>(14-16 of August)</small>
             <p>Offers On All Selected Items*</p>
-            <button className='btn-shp' onClick={()=>setState('Products')}>Shop Now</button>
+            <NavLink to='/products'>
+                <button className='btn-shp'>Shop Now</button>
+             </NavLink>
+            
             </div>
         </div>
     )
