@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './card.css'
 export function ProductCard({productItem}){
     const {id,name,image,price,quantity,fastDelivery,inStock}=productItem;
-    console.log({inStock})
     const {state:{cartItems,wishListItems},dispatch}=useStateContext();
     const cardStyle=inStock?'card-overlay':'card-OutOfStock'
     return (
