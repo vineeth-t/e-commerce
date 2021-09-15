@@ -20,7 +20,7 @@ export function StateProvider({children}){
     }(),[])
     useEffect(()=>async function(){
         try{
-            const {data} = await axios.get('/api/wishes');
+            await axios.get('/api/wishes');
          //to set wishlist items call dispatch 
         }catch(error){
             console.log(error)

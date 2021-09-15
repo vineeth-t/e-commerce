@@ -6,7 +6,7 @@ import { useDataFilter } from '../../contexts';
 import { getFilterData, getSortedData } from '../../reducers/filterReducer';
 export function ProductItemsListing( {setState}){
    const{loader,items,setToast}= useStateContext();
-   const{state:{sortBy,toggleInventory,showJCAssured},dispatch}=useDataFilter();
+   const{state:{sortBy,toggleInventory,showJCAssured}}=useDataFilter();
    const sortedData=getSortedData(items,sortBy)
    const filterData=getFilterData(sortedData,{
     toggleInventory,

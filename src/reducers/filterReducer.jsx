@@ -12,6 +12,8 @@ switch(action.type){
         return{
             ...state,sortBy:action.payload
         }
+    default:
+        return {...state}
 }
 }
 export function getFilterData(productList,{

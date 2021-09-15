@@ -43,6 +43,7 @@ export function stateReducer(state,action){
                 return{
                     ...state,wishListItems:[...state.wishListItems, action.product],toast:'addtoWislist'
                 }
+            default: return state
     }
 
 }

@@ -29,7 +29,7 @@ return (
                     return (
                             <div className='cart-container'>
                                      <div className='cart-item-container' >   
-                                                <img className='cart-item-img' src={image} alt='Item-Image'/>
+                                                <img className='cart-item-img' src={image} alt='itemImg'/>
                                                      <div className='cart-item-details'>
                                                             <div>
                                                             <h5>{name}</h5>

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {useStateContext} from '../../contexts/state-context';
 import './card.css'
 export function ProductCard({productItem}){
