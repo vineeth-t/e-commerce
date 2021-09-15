@@ -66,15 +66,19 @@
 }
 @media screen and (max-width:768px) {
     .card-overlay {
-        width:10em;
+        width:12em;
         height:19em
     }
     .card-OutOfStock{
-        width:10em;
+        width:12em;
         height:19em
     }
     .card-img{
-        width: 130px;
+        width: 160px;
         height: 150px
+    }
+    .badgeOnCard{
+        width:8em;
+        top:4rem;
     }
 }
