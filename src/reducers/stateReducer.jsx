@@ -37,11 +37,13 @@ export function stateReducer(state,action){
                 ...state,toast:''
             }
             case 'Move2Wishlist':
+                console.log(action.product)
                 if(state.wishListItems.some((item)=>item.id===action.product.id)){
                     return{...state,toast:'alreadyInWishlist'}
                 }
                 return{
-                    ...state,wishListItems:[...state.wishListItems, action.product],toast:'addtoWislist'
+              
+                    ...state,cartItems:[],wishListItems:[...state.wishListItems, action.product],toast:'addtoWislist'
                 }
             default: return state
     }

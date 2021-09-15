@@ -1,7 +1,9 @@
 import {useStateContext} from '../../contexts/state-context';
+import { Link } from 'react-router-dom';
 import './card.css'
 export function ProductCard({productItem}){
     const {id,name,image,price,quantity,fastDelivery,inStock}=productItem;
+    console.log({inStock})
     const {state:{cartItems,wishListItems},dispatch}=useStateContext();
     const cardStyle=inStock?'card-overlay':'card-OutOfStock'
     return (
@@ -29,10 +31,12 @@ export function ProductCard({productItem}){
                     }
                 <br/>
                  {cartItems.some((item)=>item.id===id) ?
+                 <Link to='/cart'>
                     <button className='btn-add2Cart'>
                         Go to Cart
-                    </button> :
-                    <button className='btn-add2Cart' onClick={()=>dispatch({type:'Add2Cart',product:{id,name,image,price,quantity}})}>
+                    </button>
+                    </Link> :
+                    <button className='btn-add2Cart' onClick={()=>dispatch({type:'Add2Cart',product:{id,name,image,price,quantity,inStock}})}>
                         Add to cart
                     </button>
                 }
