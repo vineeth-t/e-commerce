@@ -10,8 +10,8 @@ export function Login(){
     const navigate=useNavigate()
     function loginHandler(event,userName,password){
         event.preventDefault();
-        loginWithUserCredentials(userName,password)
-        state?.from?navigate(state.from): navigate('/')
+        loginWithUserCredentials(userName,password,state)
+      
     }
     return(
         <>

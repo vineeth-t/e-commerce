@@ -43,7 +43,7 @@ export function stateReducer(state,action){
                 }
                 return{
               
-                    ...state,cartItems:[],wishListItems:[...state.wishListItems, action.product],toast:'addtoWislist'
+                    ...state,cartItems:state.cartItems.filter((item)=>item.id!==action.product.id),wishListItems:[...state.wishListItems, action.product],toast:'addtoWislist'
                 }
             default: return state
     }
