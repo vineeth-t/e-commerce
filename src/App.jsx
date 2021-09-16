@@ -1,15 +1,11 @@
 import {NavBar} from './components/index';
 import {Footer} from './components/index';
-import { Cart, Home,Wishlist,ProductItemsListing,Login } from './Routes/index';
-import { Navigate } from 'react-router';
+import { Cart, Home,Wishlist,ProductItemsListing,Login} from './Routes/index';
+import {PrivateRoute} from './Routes/PrivateRoute/privateRoute'
 import { Route, Routes } from "react-router-dom";
 import './style.css'
 import { useAuth } from './contexts/authProvider';
 function App() {
- const{ isUserLoggedIn}=useAuth()
-  function PrivateRoute({...props}){
-    return isUserLoggedIn?<Route {...props}/>:<Navigate replace to='/login'/>
-  }
   return (
     <div className="App">
       <div className='App-Container'>

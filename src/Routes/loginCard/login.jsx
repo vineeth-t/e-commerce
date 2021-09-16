@@ -1,25 +1,28 @@
-import { useNavigate } from 'react-router';
+import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router';
 import { useAuth } from '../../contexts/authProvider'
 import './loginCard.css'
 export function Login(){
-    const{isUserLoggedIn,setLogin}=useAuth();
+    const{loginWithUserCredentials}=useAuth();
+    const[userName,setUserName]=useState();
+    const[password,setPassword]=useState();
+    const {state}=useLocation();
     const navigate=useNavigate()
-    function loginHandler(event,setLogin){
+    function loginHandler(event,userName,password){
         event.preventDefault();
-        setLogin(true)
-        navigate('/')
+        loginWithUserCredentials(userName,password)
+        state?.from?navigate(state.from): navigate('/')
     }
     return(
         <>
-        
-            <form className='loginCard' onSubmit={(event)=>loginHandler(event,setLogin)}>
+            <form className='loginCard' onSubmit={(event)=>loginHandler(event,userName,password)}>
                 <div >
                     <label> UserName : </label>
-                    <input type='text'/>
+                    <input type='text' onChange={(event)=>setUserName(event.target.value)}/>
                 </div>
                 <div>
                     <label>Password : </label>
-                    <input type='password'/>
+                    <input type='password' onChange={(event)=>setPassword(event.target.value)}/>
                 </div>
                 <button className='btn-logIn'>LogIn</button>
             </form>
