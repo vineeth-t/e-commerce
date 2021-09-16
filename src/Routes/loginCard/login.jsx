@@ -7,11 +7,9 @@ export function Login(){
     const[userName,setUserName]=useState();
     const[password,setPassword]=useState();
     const {state}=useLocation();
-    const navigate=useNavigate()
     function loginHandler(event,userName,password){
         event.preventDefault();
         loginWithUserCredentials(userName,password,state)
-      
     }
     return(
         <>
