@@ -4,7 +4,6 @@ import { Cart, Home,Wishlist,ProductItemsListing,Login} from './Routes/index';
 import {PrivateRoute} from './Routes/PrivateRoute/privateRoute'
 import { Route, Routes } from "react-router-dom";
 import './style.css'
-import { useAuth } from './contexts/authProvider';
 function App() {
   return (
     <div className="App">

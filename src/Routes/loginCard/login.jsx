@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router';
+import { useLocation } from 'react-router';
 import { useAuth } from '../../contexts/authProvider'
 import './loginCard.css'
 export function Login(){
