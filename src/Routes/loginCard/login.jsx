@@ -1,19 +1,28 @@
-import { useState } from 'react';
-import { useLocation } from 'react-router';
+import { useEffect, useState } from 'react';
+import { Navigate, useLocation, useNavigate } from 'react-router';
 import { useAuth } from '../../contexts/authProvider'
 import './loginCard.css'
 export function Login(){
-    const{loginWithUserCredentials}=useAuth();
-    const[userName,setUserName]=useState();
-    const[password,setPassword]=useState();
+    const{loginWithUserCredentials,setLogin,isUserLoggedIn}=useAuth();
+    const[userName,setUserName]=useState('');
+    const[password,setPassword]=useState('');
+    const navigate=useNavigate()
     const {state}=useLocation();
-    function loginHandler(event,userName,password){
-        event.preventDefault();
-        loginWithUserCredentials(userName,password,state)
+    const loginStatus=JSON.parse(localStorage?.getItem('login'))
+    function loginHandler(event,userName,password,state){
+            event.preventDefault();
+            loginWithUserCredentials(userName,password,state)
+             
+    }
+    function logoutHandler(){
+        localStorage.removeItem('login')
+        navigate('/login')
     }
     return(
-        <>
-            <form className='loginCard' onSubmit={(event)=>loginHandler(event,userName,password)}>
+        <>{loginStatus?.userLoginStatus?<div>
+            <button className='btn-logIn' onClick={logoutHandler}>Logout</button>
+        </div>:
+            <form className='loginCard' onSubmit={(event)=>loginHandler(event,userName,password,state)}>
                 <div >
                     <label> UserName : </label>
                     <input type='text' onChange={(event)=>setUserName(event.target.value)}/>
@@ -24,6 +33,7 @@ export function Login(){
                 </div>
                 <button className='btn-logIn'>LogIn</button>
             </form>
+        }
         </>
     )
 }
