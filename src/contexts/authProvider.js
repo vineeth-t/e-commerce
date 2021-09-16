@@ -4,7 +4,7 @@ import { fakeAuthApI } from "../api/authApi";
 export const AuthContext=  createContext();
 
 export function Auth({children}){
-//   const[isUserLoggedIn,setLogin]=useState(false);
+   const loginStatus=JSON.parse(localStorage?.getItem('login'))
   const navigate=useNavigate()
   async function loginWithUserCredentials(userName,password,state){
      console.log(state)
@@ -21,7 +21,7 @@ export function Auth({children}){
      }
   }
 
-  return <AuthContext.Provider value={{loginWithUserCredentials}}>
+  return <AuthContext.Provider value={{loginWithUserCredentials,loginStatus}}>
                 {children}
         </AuthContext.Provider>
 }

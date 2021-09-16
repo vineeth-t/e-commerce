@@ -3,12 +3,12 @@ import { Navigate, useLocation, useNavigate } from 'react-router';
 import { useAuth } from '../../contexts/authProvider'
 import './loginCard.css'
 export function Login(){
-    const{loginWithUserCredentials,setLogin,isUserLoggedIn}=useAuth();
+    const{loginWithUserCredentials,loginStatus}=useAuth();
     const[userName,setUserName]=useState('');
     const[password,setPassword]=useState('');
     const navigate=useNavigate()
     const {state}=useLocation();
-    const loginStatus=JSON.parse(localStorage?.getItem('login'))
+
     function loginHandler(event,userName,password,state){
             event.preventDefault();
             loginWithUserCredentials(userName,password,state)
