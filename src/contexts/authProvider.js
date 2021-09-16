@@ -1,15 +1,17 @@
 import { createContext, useContext, useState } from "react";
+import { fakeAuthApI } from "../api/authApi";
 export const AuthContext=  createContext();
-
-export const Users={
-  userName:'god',
-  password:'tanay'
-}
 export function Auth({children}){
   const[isUserLoggedIn,setLogin]=useState(false);
-  function loginWithUserCredentials(userName,password){
-     if(userName===Users.userName&&password===Users.password){
-      setLogin(true)
+ async function loginWithUserCredentials(userName,password){
+     try{
+     const response= await fakeAuthApI(userName,password);
+     console.log("response",{response})
+     if(response.userLoggedIn){
+       setLogin(true)
+     }
+     }catch(error){
+      console.log(error)
      }
   }
 
