@@ -1,0 +1,10 @@
+@import '../../style.css';
+
+.footer-container{
+    width:100%;
+    background-color: var(--secondary-color);
+    color:var(--primary-color);
+    height:140px;
+    text-align: center;
+    padding: 1rem;
+}

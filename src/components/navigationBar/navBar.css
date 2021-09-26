@@ -1,0 +1,172 @@
+
+@import '../../style.css';
+.active{
+font-size: large;
+font-weight: 400;
+color:black;
+font-weight: bolder;
+}
+a{
+    text-decoration: none;
+    
+}
+.navbar{
+    position: sticky;
+    z-index: 1;
+    background-color: var(--primary-color);
+	top: 0;
+	left: 0;
+	width: 100%;
+    display:flex;
+    justify-content: space-between;
+    font-weight:1000;
+    align-items: center;
+    padding:0.5rem;
+    cursor:pointer; 
+}
+
+.navbar-items{
+    display:flex;
+    flex-direction: column;
+    font-size:small;
+    position: relative;
+}
+.navbar-itemNo{
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:1.25rem;
+    height: 1.25rem;
+    top: -0.3rem;
+    left: 1.0rem; 
+    border-radius: 50%;
+    background-color: var(--no-of-items-color);
+    color: var(--primary-color);
+    font-size:smaller;
+}
+.navbar-component{
+    display: flex;
+    align-items: center;
+}
+.navbar-wishlist{
+    top: -0.4rem;
+    left: 1.9rem; 
+}
+.navbar-items:hover{
+    transform: scale(1.05);
+}
+.nav-l{
+    display: inline-block;
+    text-align: center;
+    margin-left:2rem;
+    font-weight: bolder;
+}
+.navbar-theme{  
+    border:transparent;
+    background-color: transparent;
+}
+.navbar-left{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-left a{
+    margin-left:2rem;
+    margin-right: 0.4rem;
+    text-decoration: none;
+    color: black;
+    
+}
+.navbar-items{
+transition: transform 0.2s ease-in;
+display:flex;
+cursor:pointer;
+justify-content: center;
+align-items: center;
+}
+.nav-link{
+    color:var(--primary-color);
+    background-color: var(--secondary-color);
+    padding:0.75rem;
+    text-decoration: none;
+}
+.navbar-right-of-mobile{
+    display: none;
+}
+.hambug{
+    display: none;
+    position: relative;
+}
+@media screen and (max-width: 768px) {
+    .navbar-component,
+    .navbar-left div{
+       margin-left:1rem
+     }   
+    .login,
+    .navbar-component,
+    .navbar-items label{
+        display: none;
+    }
+    .navbar-wishlist{
+        top: -0.3rem;
+        left: 1.0rem; 
+    }
+    .nav-link{
+        padding:0.3rem;
+    }
+    .navbar-menu{
+        display: flex;
+    }
+    .navbar-right-of-mobile{
+        display: flex;
+
+    }
+    .nav-hambug{
+        background-color: white;
+        border:none;
+        margin-right: 0.5em;
+    }
+    .hambug-view{
+        position:absolute;
+        top:0;
+        left:0;
+        background-color: var(--primary-color);
+        width:10rem;
+        height:100vh;
+       
+    }
+    .hambug-close{
+        position: absolute;
+        background-color: var(--primary-color);
+        border:none;
+        color:var(--secondary-color);
+        font-weight: 900;
+        top:1em;
+        right:1em;
+    }
+    .nav-hambug-profile{
+        background-color: var(--secondary-color);
+        height:15vh;
+        position: relative
+    }
+    .svg-profile{
+       position: absolute;
+        top:2em;
+        left:3.5em;
+    }
+    .hambug-items{
+        margin-left: 0.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .hambug-items a{
+            padding:0.7rem;
+            color:black;
+    }
+    .active{
+        font-size:x-large;
+        font-weight:bolder;
+    }
+}

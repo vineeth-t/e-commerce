@@ -1,0 +1,16 @@
+@import '../../style.css';
+.wishlist-container{
+    text-align: center;
+}
+.wishlist-items{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.wishlist-l{
+    background-color: var(--secondary-color);
+    color:var(--primary-color);
+    width:fit-content;
+    padding:0.2em;
+}
