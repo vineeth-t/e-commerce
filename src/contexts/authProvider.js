@@ -1,27 +1,37 @@
-import { createContext, useContext } from "react";
-import { useNavigate } from "react-router";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import { fakeAuthApI } from "../api/authApi";
+import {loginReducer} from '../reducers/loginReducer'
 export const AuthContext=  createContext();
 
 export function Auth({children}){
-   const loginStatus=JSON.parse(localStorage?.getItem('login'))
-  const navigate=useNavigate()
-  async function loginWithUserCredentials(userName,password,state){
-     console.log(state)
-     try{
-     const response= await fakeAuthApI(userName,password);
-     console.log(response)
-     if(response.userLoginStatus){
-        //setLogin(true)
-        localStorage?.setItem('login',JSON.stringify({userLoginStatus:true}))
-        state?.from?navigate(state.from): navigate('/')
-     }
-     }catch(error){
-      console.log(error)
-     }
-  }
-
-  return <AuthContext.Provider value={{loginWithUserCredentials,loginStatus}}>
+  useEffect(()=>{
+   const loginStatus=JSON.parse(localStorage.getItem('login'))
+   if(loginStatus?.isUserLoggedIn){
+    authDispatch({type:'LOGIN',payload:loginStatus.userName})
+   }
+  },[])
+    const[authState,authDispatch]=useReducer(loginReducer, {
+                                                      login:false,
+                                                      userName:'',
+                                                      password:''
+                                                    })
+  
+                  
+  async function loginWithUserCredentials(state,userName,password,navigate){
+                 try{
+                  const response= await fakeAuthApI(userName,password);
+                   if(response?.userLoginStatus){
+                     console.log('hello')
+                     authDispatch({type:'LOGIN',payload:userName})
+                        localStorage?.setItem('login',JSON.stringify({isUserLoggedIn:true,userName:userName}))
+                            navigate(state?.from?state.from:'/profile')
+                              }
+                    }catch(error){
+                            alert('In valid Credentials')
+                             navigate('/login')
+       }
+    }
+  return <AuthContext.Provider value={{authState,authDispatch,loginWithUserCredentials}}>
                 {children}
         </AuthContext.Provider>
 }

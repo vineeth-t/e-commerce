@@ -21,3 +21,15 @@ export function fakeAuthApI(userName,password){
     })
 }
     
+export function SignUpApi(fname, lname, emailId, password, confirmPassword){
+    return new Promise((resolve,reject)=>{
+        const user=findUserByUserName(emailId)
+        if(user){
+            Users.concat({fname, lname, emailId, password, confirmPassword})
+            resolve({success:true,status:200})
+            
+        }else{
+            reject({success:false,status:401})
+        }
+    })
+}

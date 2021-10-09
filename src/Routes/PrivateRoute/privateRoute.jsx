@@ -1,6 +1,7 @@
 import { Navigate } from 'react-router';
 import { Route } from 'react-router';
+import { useAuth } from '../../contexts';
 export function PrivateRoute({path,...props}){
-    const loginStatus=JSON.parse(localStorage?.getItem('login'))
-    return loginStatus?.userLoginStatus?<Route path={path}{...props}/>:<Navigate state={{from:path}} replace to='/login'/>
+  const {authState:{ login} } = useAuth();
+  return login ? <Route path={path} {...props} /> : <Navigate state={{from:path}} replace to="/login" />;
   }
