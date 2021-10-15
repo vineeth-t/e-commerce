@@ -1,30 +1,29 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import { fakeAuthApI } from "../api/authApi";
 import {loginReducer} from '../reducers/loginReducer'
 export const AuthContext=  createContext();
 
 export function Auth({children}){
-  useEffect(()=>{
-   const loginStatus=JSON.parse(localStorage.getItem('login'))
-   if(loginStatus?.isUserLoggedIn){
-    authDispatch({type:'LOGIN',payload:loginStatus.userName})
-   }
-  },[])
+
     const[authState,authDispatch]=useReducer(loginReducer, {
-                                                      login:false,
-                                                      userName:'',
+                                                      login,
+                                                      userName,
                                                       password:''
                                                     })
   
-                  
+const loginStatus=JSON.parse(localStorage.getItem('login'))
+  if(loginStatus?.isUserLoggedIn){
+      login=true
+      userName=loginStatus.userName;
+     }
+             
   async function loginWithUserCredentials(state,userName,password,navigate){
                  try{
                   const response= await fakeAuthApI(userName,password);
                    if(response?.userLoginStatus){
-                     console.log('hello')
-                     authDispatch({type:'LOGIN',payload:userName})
+                        authDispatch({type:'LOGIN',payload:userName})
                         localStorage?.setItem('login',JSON.stringify({isUserLoggedIn:true,userName:userName}))
-                            navigate(state?.from?state.from:'/profile')
+                        navigate(state?.from?state.from:'/profile')
                               }
                     }catch(error){
                             alert('In valid Credentials')
@@ -38,3 +37,5 @@ export function Auth({children}){
 export function useAuth(){
     return useContext(AuthContext)
 }
+export let login=false;
+export let userName='';

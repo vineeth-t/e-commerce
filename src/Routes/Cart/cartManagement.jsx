@@ -25,6 +25,7 @@ return (
             <div>
                 <div>
                     {state.cartItems.map(({id,name,image,price,quantity,inStock})=>{
+                     
                         totalAmount=totalAmount + ( (quantity)*parseInt( price, 10 ))
                     return (
                             <div className='cart-container'>
@@ -41,7 +42,7 @@ return (
                                                                 <button onClick={()=>dispatch({type:"Increment",productID:id})} className='btn-primary'>+</button>
                                                             </div>
                                                             <div>
-                                                                 <button className='btn-wishlist' onClick={()=>dispatch({type:'Move2Wishlist',product:{id,name,image,price,inStock}})}>Move to Wishlist</button>
+                                                                 <button className='btn-wishlist' onClick={()=>dispatch({type:'Move2Wishlist',product:{id,name,image,price,inStock,quantity}})}>Move to Wishlist</button>
                                                             </div>
                                                         </div> 
                                                     </div> 

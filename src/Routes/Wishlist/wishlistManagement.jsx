@@ -15,6 +15,7 @@ export function Wishlist(){
            
             <div className='wishlist-items'>
             {wishListItems.map((productItem)=>{
+                console.log(productItem)
                 return(
                    <div>
                         <ProductCard 
