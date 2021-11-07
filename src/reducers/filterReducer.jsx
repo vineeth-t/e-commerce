@@ -20,11 +20,8 @@ export function getFilterData(productList,{
     toggleInventory,
     showJCAssured
    }){
-       console.log({  showJCAssured,toggleInventory
-        })
     if(showJCAssured===true && toggleInventory===true ){
-        return productList.filter((product)=>product.fastDelivery===true && product.inStock===false)
-
+        return productList.filter((product)=>product.fastDelivery===true)
     } else if(showJCAssured===true && toggleInventory===false ){
         return productList.filter((product)=>product.fastDelivery===true && product.inStock===true)
     }else if(showJCAssured===false && toggleInventory===false ){

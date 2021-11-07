@@ -1,5 +1,5 @@
 import { useDataFilter } from '../../contexts/index'
-export function Filters({showtheFilter,setTheFilter}){
+export function Catergories({showtheFilter,setTheFilter}){
     const{state:{toggleInventory,showJCAssured},dispatch}= useDataFilter()
     return <>
     <div className='filterCard-heading'>
@@ -55,7 +55,7 @@ export function Filters({showtheFilter,setTheFilter}){
     <div className='filterCard-radio-btn'>
         <h4>Others</h4>
         <label>
-             <input type ='checkbox' checked={showJCAssured}onChange={()=>dispatch({type:'FAST_DELIVERY'})} />
+             <input type ='checkbox' checked={showJCAssured} onChange={()=>dispatch({type:'FAST_DELIVERY'})} />
                Fast Delivery
         </label>
         <label>
