@@ -4,19 +4,22 @@ import {loginReducer} from '../reducers/loginReducer'
 export const AuthContext=  createContext();
 
 export function Auth({children}){
+ let login;
+ let userName='';
+ const loginStatus= JSON.parse(localStorage.getItem('login'));
+ if(loginStatus?.isUserLoggedIn){
+     login=true;
+     userName=loginStatus.userName
+ }else{
+     login=false
+ }
 
     const[authState,authDispatch]=useReducer(loginReducer, {
                                                       login,
                                                       userName,
                                                       password:''
                                                     })
-  
-const loginStatus=JSON.parse(localStorage.getItem('login'))
-  if(loginStatus?.isUserLoggedIn){
-      login=true
-      userName=loginStatus.userName;
-     }
-             
+          
   async function loginWithUserCredentials(state,userName,password,navigate){
                  try{
                   const response= await fakeAuthApI(userName,password);
@@ -37,5 +40,3 @@ const loginStatus=JSON.parse(localStorage.getItem('login'))
 export function useAuth(){
     return useContext(AuthContext)
 }
-export let login=false;
-export let userName='';
