@@ -23,7 +23,7 @@ export function StateProvider({children}){
         try{
             const {data:{response}}=await axios.get('https://JungleClap-Express-Server.vineetht.repl.co/wishlist')
             console.log(response)
-            dispatch({type:'wishlist',payload:response})
+            dispatch({type:'SET_WISHLIST',payload:response})
           }catch(error){
             console.log(error)
           }
@@ -39,4 +39,4 @@ export function useStateContext(){
 }
 export const cartItems=[];
 export const wishListItems=[];
-export const toast='';
+export let toast;
