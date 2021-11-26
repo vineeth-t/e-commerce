@@ -1,5 +1,9 @@
 export function stateReducer(state,action){
     switch(action.type){
+        case 'SET_PRODUCTS':
+            return {...state,products:action.payload}
+        case 'SET_WISHLIST':
+                return{...state,wishListItems:action.payload}
         case 'Increment':
             return {...state,
                         cartItems:
@@ -22,11 +26,6 @@ export function stateReducer(state,action){
                 ...state,
                 cartItems: [...state.cartItems, action.product],toast:'addtoCart'
               };
-        case 'Add2Wishlist':
-                return {
-                    ...state,
-                    wishListItems: [...state.wishListItems, action.product],toast:'addtoWislist'
-                  };
         case 'removeProductFromwishlist':
                     return {
                         ...state,
@@ -36,7 +35,7 @@ export function stateReducer(state,action){
             return{
                 ...state,toast:''
             }
-            case 'Move2Wishlist':
+        case 'Move2Wishlist':
                 console.log(action.product)
                 if(state.wishListItems.some((item)=>item.id===action.product.id)){
                     return{...state,toast:'alreadyInWishlist'}
