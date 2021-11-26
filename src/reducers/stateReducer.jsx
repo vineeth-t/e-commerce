@@ -1,9 +1,9 @@
 export function stateReducer(state,action){
     switch(action.type){
         case 'SET_PRODUCTS':
-            return {...state,products:action.payload}
+            return {...state,products:action.payload,toast:action.toast}
         case 'SET_WISHLIST':
-                return{...state,wishListItems:action.payload}
+                return{...state,wishListItems:action.payload,toast:action.toast}
         case 'Increment':
             return {...state,
                         cartItems:

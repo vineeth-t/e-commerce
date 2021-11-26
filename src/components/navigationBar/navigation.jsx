@@ -8,11 +8,7 @@ export function NavBar(){
   const[hambug,sethambug]=useState('hambug');
     return (  
     <nav className='navbar'>
-        {toast==='addtoCart' &&   <Toast msg={'Added To Cart'}/>}
-       {toast==='addtoWislist' &&   <Toast msg={'Added To WishList'}/>}
-       {toast==='alreadyInWishlist' &&   <Toast msg={'Item Already in Wishlist'}/>}
-       {toast==='removedFromWislist' &&   <Toast msg={'Item removed from Wishlist'}/>}
-       {toast==='removedFromCart' &&   <Toast msg={'Item removed from Cart'}/>}
+      {toast&&<Toast/>}
           <div className='navbar-right-of-mobile'>
                 <button className='nav-hambug' onClick={()=>sethambug('hambug-view')}>
                 <svg width="1.5em" height="2em" viewBox="0 0 48 48"><g fill="none" stroke="#000" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><path d="M42 19H6M42 9H6M42 29H6M42 39H6"></path></g></svg>
