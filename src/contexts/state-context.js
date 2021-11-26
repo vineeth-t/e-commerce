@@ -9,8 +9,9 @@ export function StateProvider({children}){
     useEffect(()=>async function(){
         setLoader(true)
         try{
-            const {data} = await axios.get('/api/products');
-            setItems(data.products)
+            const {data:{products}} = await axios.get('https://JungleClap-Express-Server.vineetht.repl.co/products')
+            console.log(products)
+            setItems(products)
         }catch(error){
             console.log(error)
         }finally{
@@ -20,11 +21,12 @@ export function StateProvider({children}){
     }(),[])
     useEffect(()=>async function(){
         try{
-            await axios.get('/api/wishes');
-         //to set wishlist items call dispatch 
-        }catch(error){
+            const {data:{response}}=await axios.get('https://JungleClap-Express-Server.vineetht.repl.co/wishlist')
+            console.log(response)
+            dispatch({type:'wishlist',payload:response})
+          }catch(error){
             console.log(error)
-        }
+          }
     }(),[])
     return(
         <StateContext.Provider value={{state,dispatch,loader,items}}>
