@@ -1,5 +1,5 @@
 import { useStateContext } from "../../contexts/state-context";
-import { removeFromCart } from "../../components/axios/axios";
+import { decrementQuantity, incrementQuantity, removeFromCart } from "../../components/axios/axios";
 import './cart.css';
 export function Cart(){
     let totalAmount=0.0;
@@ -38,9 +38,9 @@ return (
                                                             <h5>Rs/-{(quantity)*price}</h5>
                                                             </div>
                                                             <section className='button-qty'>
-                                                                <button onClick={()=>dispatch({type:"Decrement",productID:id})} className='btn-primary'>-</button>
+                                                                <button onClick={()=>decrementQuantity(id,dispatch)} className='btn-primary'>-</button>
                                                                 <span className='quantity'>{quantity}</span> 
-                                                                <button onClick={()=>dispatch({type:"Increment",productID:id})} className='btn-primary'>+</button>
+                                                                <button onClick={()=>incrementQuantity(id,dispatch)} className='btn-primary'>+</button>
                                                             </section>
                                                             <section className='btn-section'>
                                                                  {/* <button className='btn btn-wishlist' onClick={()=>addToWatchlist(productItem,dispatch)}>Wishlist</button> */}

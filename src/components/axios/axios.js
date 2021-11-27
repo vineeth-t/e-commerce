@@ -33,3 +33,19 @@ export async function removeFromCart(id,dispatch){
         console.log(error)
     }
 }
+export async function incrementQuantity(id,dispatch){
+    try{
+        const {data:{response}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/cart/${id}`,{flag:'INC'})
+        dispatch({type:'SET_CART_ITEMS',payload:response})
+    }catch(error){
+        console.log(error)
+    }
+}
+export async function decrementQuantity(id,dispatch){
+    try{
+        const {data:{response}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/cart/${id}`,{flag:'DEC'})
+        dispatch({type:'SET_CART_ITEMS',payload:response})
+    }catch(error){
+        console.log(error)
+    }
+}
