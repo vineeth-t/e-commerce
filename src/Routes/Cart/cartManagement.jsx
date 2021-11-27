@@ -1,5 +1,6 @@
 import { useStateContext } from "../../contexts/state-context";
-import './cart.css'
+import { removeFromCart } from "../../components/axios/axios";
+import './cart.css';
 export function Cart(){
     let totalAmount=0.0;
     const {state,dispatch}=useStateContext();
@@ -25,7 +26,7 @@ return (
             <div>
                 <div>
                     {state.cartItems.map(({id,name,image,price,quantity,inStock})=>{
-                     
+                        // const productItem={id,name,image,price,quantity,inStock}
                         totalAmount=totalAmount + ( (quantity)*parseInt( price, 10 ))
                     return (
                             <div className='cart-container'>
@@ -33,17 +34,19 @@ return (
                                                 <img className='cart-item-img' src={image} alt='itemImg'/>
                                                      <div className='cart-item-details'>
                                                             <div>
-                                                            <h5>{name}</h5>
-                                                            <h6>Rs/-{(quantity)*price}</h6>
+                                                            <h4>{name}</h4>
+                                                            <h5>Rs/-{(quantity)*price}</h5>
                                                             </div>
-                                                            <div className='button-qty'>
+                                                            <section className='button-qty'>
                                                                 <button onClick={()=>dispatch({type:"Decrement",productID:id})} className='btn-primary'>-</button>
                                                                 <span className='quantity'>{quantity}</span> 
                                                                 <button onClick={()=>dispatch({type:"Increment",productID:id})} className='btn-primary'>+</button>
-                                                            </div>
-                                                            <div>
-                                                                 <button className='btn-wishlist' onClick={()=>dispatch({type:'Move2Wishlist',product:{id,name,image,price,inStock,quantity}})}>Move to Wishlist</button>
-                                                            </div>
+                                                            </section>
+                                                            <section className='btn-section'>
+                                                                 {/* <button className='btn btn-wishlist' onClick={()=>addToWatchlist(productItem,dispatch)}>Wishlist</button> */}
+                                                                 <button className='btn btn-remove' onClick={()=>removeFromCart(id,dispatch)}>Remove</button>
+                                                                 <button className='btn btn-remove-icon' onClick={()=>removeFromCart(id,dispatch)}><svg width="2em" height="2em" viewBox="0 0 24 24"><path d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12z"  fill="currentColor"></path></svg></button>
+                                                            </section>
                                                         </div> 
                                                     </div> 
                                     </div>
