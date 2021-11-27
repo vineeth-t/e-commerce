@@ -28,6 +28,15 @@ export function StateProvider({children}){
             console.log(error)
           }
     }(),[])
+    useEffect(()=>async function(){
+        try{
+            const {data:{response}}=await axios.get('https://JungleClap-Express-Server.vineetht.repl.co/cart')
+            console.log(response)
+            dispatch({type:'SET_CART_ITEMS',payload:response})
+          }catch(error){
+            console.log(error)
+          }
+    }(),[])
     return(
         <StateContext.Provider value={{state,dispatch,loader,items}}>
             {children}

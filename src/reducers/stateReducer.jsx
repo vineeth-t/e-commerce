@@ -4,6 +4,8 @@ export function stateReducer(state,action){
             return {...state,products:action.payload,toast:action.toast}
         case 'SET_WISHLIST':
                 return{...state,wishListItems:action.payload,toast:action.toast}
+        case 'SET_CART_ITEMS':
+            return{...state,cartItems:action.payload,toast:action.toast}
         case 'Increment':
             return {...state,
                         cartItems:
