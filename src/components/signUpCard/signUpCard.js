@@ -22,31 +22,21 @@ export function SignUp(){
     errorDispatch({type,payload:''})
   }
 
-  function signUpHandler(
-                            e,
-                            fname
-                          )
-                              {
-                                e.preventDefault();
-                                if (formChecker(formState,errorDispatch)) {
-                                  localStorage?.setItem('login',JSON.stringify({isUserLoggedIn:true,userName:fname}))
-                                  authDispatch({type:'LOGIN',payload:fname})
-                                  navigate('/profile')
-                                } 
+  function signUpHandler(e,fname){
+     e.preventDefault();
+     if(formChecker(formState,errorDispatch)) {
+             localStorage?.setItem('login',JSON.stringify({isUserLoggedIn:true,userName:fname}))
+              authDispatch({type:'LOGIN',payload:fname})
+              navigate('/profile')
+     } 
                                 
-                              }
+   }
   return (login ? <Navigate to='/profile'/>: <div className="signup">
         <h2>SIGN-UP</h2><br/>
         <h4>sign up to watch amazing videos</h4><br/>
         <form
-          onSubmit={(e) =>
-            signUpHandler(
-              e,
-              fname
-            )
-          }
-          className="signup-form"
-        >
+          onSubmit={(e) =>signUpHandler( e,fname)}
+          className="signup-form">
           <div>
               <label> First Name:</label>
                   <div className='input-error-div'>

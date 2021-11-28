@@ -1,11 +1,15 @@
 import { useStateContext } from "../../contexts/state-context";
 import { decrementQuantity, incrementQuantity, removeFromCart } from "../../components/axios/axios";
 import './cart.css';
+import { AddressCard, AdressModal } from "../../components/addressCard/addressCard";
+import { useState } from "react";
 export function Cart(){
+    const[address,setAddress]=useState(false)
     let totalAmount=0.0;
     const {state,dispatch}=useStateContext();
 return (
     <div className='cart-hero'>
+         {address&&<AdressModal setAddress={setAddress}/>}
         <div className='cart-holder'>
              <div style={{textAlign:"center",padding:"1rem"}}>
                 <h3 >My Cart</h3>
@@ -13,14 +17,10 @@ return (
                     state.cartItems.length===0 && <h5 style={{padding:"1rem"}}>Your cart is empty</h5>
                 }
              </div>
+           
             <div>
                 {state.cartItems.length>=1&&
-                    <div className='address-container'>             
-                        <small className='address-details'>
-                            <h6>Deliver To:</h6> Alex carey <br/>
-                            <small>H.No-4-1/40, Indra Nagar, Bangolre, 5000001</small>
-                        </small>
-                    </div>
+                    <AddressCard setAddress={setAddress}/>
                 }
             </div>
             <div>

@@ -1,15 +1,5 @@
 @import '../../style.css';
-.address-container{
-   display: flex;
-   padding: 1rem;
-   border: 1px dotted var(--secondary-color);
-   margin-bottom: 0.5rem;
-   width:400px;
-}
-.address-details{
-    padding-left: 0.4rem;
-    font-weight:bolder;
-}
+
 .cart-hero{
     display: flex;
     justify-content: center;
