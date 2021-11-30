@@ -3,7 +3,14 @@ import {stateReducer} from '../reducers/stateReducer'
 import axios from 'axios';
 export const StateContext= createContext();
 export function StateProvider({children}){
-    const[state,dispatch]=useReducer(stateReducer,{cartItems,wishListItems,toast})
+    const[state,dispatch]=useReducer(stateReducer,{cartItems,wishListItems,toast,address:[],currentAddress:{
+      houseNo: "4-46",
+      streetName: "sree ram nagar ",
+      landmark: "vartha office",
+      city: "khammam",
+      district: "khammmam",
+      pincode:507101
+    }})
     const[items,setItems]=useState([]);
     const[loader,setLoader]=useState(false);
     useEffect(()=>async function(){

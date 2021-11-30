@@ -23,40 +23,96 @@
     background-color: rgba(0,0,0,0.7);
     color:white;
  }
- .address-body{
-     display: flex;
-     flex-direction: row;
-     margin-top:2rem;
-     width:100%;
- }
- .addressess{
-    border:1px dotted var( --primary-color);
-     width:30%;
-     height:fit-content;
-     padding:1rem;
-     margin-right:1rem
- }
  .address-modal-close{
      position: absolute;
      top:2rem;
      right:10rem;
 
  }
+ .btn{
+     margin:0.5rem;
+ }
  .address-form{
-     border:1px dotted var( --primary-color);
-     padding:1rem;
-     width:90%;
-    
+        margin:auto;
+        border:1px dotted var( --primary-color);
+        padding:1rem;
+        width:50%; 
  }
  .address-fields{
+    position: relative;
     display: flex;
     flex-direction: row;
+    margin-bottom:2rem;
     width:100%
  }
  .address-fields label{
      width:20%
  }
  .address-fields input{
+    
      width:60%
  }
- 
+ .alert-msg{
+     color:red;
+     font-weight:900;
+     position: absolute;
+     margin-top:0.5rem;
+     top:1.5rem;
+     left:7rem;
+ }
+ .address-list{
+     list-style: none;
+     margin: auto;
+     width:40%
+ }
+ .addresses{
+     display: flex;
+     margin: 1rem;
+     background-color: var(--primary-color);
+     color:var(--secondary-color);
+     padding:1rem;
+   
+ }
+ .address-li{
+     padding-left: 1rem;
+     font-weight: 900;
+     font-size:0.75rem;
+     width:50%;
+
+ }
+
+ @media screen and (max-width: 768px){
+    .address-list{
+        list-style: none;
+        width:100%;
+        margin-top:3rem;
+    }
+     .address-container{
+         width: 300px;
+     }
+    .address-modal{
+        position: fixed;
+        top:1rem;
+        padding:0;
+    }
+    .address-form{
+        margin:1rem 0 0 1rem;
+        width: 330px;
+    }
+    .address-fields{
+        width:100%
+     }
+     .address-fields label{
+         width:40%
+     }
+     .address-fields input{
+        
+         width:60%
+     }
+     .address-modal-close{
+        position: absolute;
+        top:2.5rem;
+        right:1rem;
+   
+    }
+ }
