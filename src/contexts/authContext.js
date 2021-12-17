@@ -1,8 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
-import { fakeAuthApI } from "../api/authApi";
-import {loginReducer} from '../reducers/loginReducer'
+import {authReducer} from '../reducers/authReducer'
 export const AuthContext=  createContext();
-
 export function Auth({children}){
  let login;
  let userName='';
@@ -14,26 +12,14 @@ export function Auth({children}){
      login=false
  }
 
-    const[authState,authDispatch]=useReducer(loginReducer, {
+    const[authState,authDispatch]=useReducer(authReducer, {
                                                       login,
                                                       userName,
                                                       password:''
                                                     })
           
-  async function loginWithUserCredentials(state,userName,password,navigate){
-                 try{
-                  const response= await fakeAuthApI(userName,password);
-                   if(response?.userLoginStatus){
-                        authDispatch({type:'LOGIN',payload:userName})
-                        localStorage?.setItem('login',JSON.stringify({isUserLoggedIn:true,userName:userName}))
-                        navigate(state?.from?state.from:'/profile')
-                              }
-                    }catch(error){
-                            alert('In valid Credentials')
-                             navigate('/login')
-       }
-    }
-  return <AuthContext.Provider value={{authState,authDispatch,loginWithUserCredentials}}>
+ 
+  return <AuthContext.Provider value={{authState,authDispatch}}>
                 {children}
         </AuthContext.Provider>
 }
