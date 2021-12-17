@@ -49,3 +49,38 @@ export async function decrementQuantity(id,dispatch){
         console.log(error)
     }
 }
+
+export async function signUpHandler(e,navigate,formChecker,formState,errorDispatch,authDispatch){
+    e.preventDefault();
+    if(formChecker(formState,errorDispatch)) {
+        const {data:{response}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/signUp`,{firstname:formState.fname,lastname:formState.lname,username:formState.emailId,
+        password:formState.password}) 
+        if(response){
+            localStorage?.setItem('login',JSON.stringify({isUserLoggedIn:true,userName:formState.fname}))
+            authDispatch({type:'LOGIN',payload:formState.fname})
+            navigate('/profile')
+        }else{
+            navigate('/signUp')
+            alert('something went wrong!')
+        }
+            
+    }                             
+  }
+
+  export async function loginHandler(event,loginDetails){
+      event.preventDefault ();
+      const{state,userName,password,authDispatch,navigate}=loginDetails
+      console.log(navigate)
+      try{
+        const {data:{response,fname}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/logIn`,{username:userName,password:password})
+        console.log(response,fname)
+        if(response){
+            localStorage?.setItem('login',JSON.stringify({isUserLoggedIn:true,userName:fname}))
+            authDispatch({type:'LOGIN',payload:fname})
+            navigate(state?.from?state.from:'/profile')
+        }
+      }catch(error){
+          console.log(error)
+      }
+    
+  }

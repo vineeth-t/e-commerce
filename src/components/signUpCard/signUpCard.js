@@ -3,7 +3,8 @@ import { useNavigate,Navigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/index";
 import {signUpreducer, errorHandler, formChecker } from "../../reducers/index";
-import { InputFieldForPassword, Mask } from "./inputFieldForPAssword";
+import { signUpHandler } from "../axios/axios";
+import { Mask } from "./inputFieldForPAssword";
 import './signUpCard.css'
 export function SignUp(){
   const navigate = useNavigate();
@@ -17,25 +18,16 @@ export function SignUp(){
   });
   const[mask,setMask]=useState(true)
   const [errorState,errorDispatch]=useReducer(errorHandler,{})
-  const{fname}=formState;
   function clearingError(type){
     errorDispatch({type,payload:''})
   }
 
-  function signUpHandler(e,fname){
-     e.preventDefault();
-     if(formChecker(formState,errorDispatch)) {
-             localStorage?.setItem('login',JSON.stringify({isUserLoggedIn:true,userName:fname}))
-              authDispatch({type:'LOGIN',payload:fname})
-              navigate('/profile')
-     } 
-                                
-   }
+
   return (login ? <Navigate to='/profile'/>: <div className="signup">
         <h2>SIGN-UP</h2><br/>
         <h4>sign up to watch amazing videos</h4><br/>
         <form
-          onSubmit={(e) =>signUpHandler( e,fname)}
+          onSubmit={(e) =>signUpHandler( e,navigate,formChecker,formState,errorDispatch,authDispatch)}
           className="signup-form">
           <div>
               <label> First Name:</label>
@@ -100,10 +92,17 @@ export function SignUp(){
           <div >
                  <label>Password:</label>
                  <div className='input-error-div'>
-                      <InputFieldForPassword mask={mask}  clearingError={clearingError}  formDispatch={formDispatch} type="SET-PASSWORD"/>
-                       <Mask mask={mask} setMask={setMask}/>
-                       <span  style={{display:errorState.password?"flex":'none'}} className='error-msg'>
-                       <svg width="1.2em" height="1.2em" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 0 1 7-7m0 2a5 5 0 0 0-5 5c0 1 0 3 5 9.71C17 12 17 10 17 9a5 5 0 0 0-5-5m-1 2h2v5h-2V6m0 7h2v2h-2v-2z" fill="currentColor"></path></svg>
+                 <input type={mask?'password':'text'}
+                       placeholder="Password length should be 8(or more)"
+                       onChange={(event) =>
+                                            formDispatch({
+                                              type: 'SET-PASSWORD',
+                                              payload: event.target.value
+                                          })}
+                       onFocus={()=>clearingError('SET_PASSWORD_ERR')}/>
+                  <Mask mask={mask} setMask={setMask}/>
+                   <span  style={{display:errorState.password?"flex":'none'}} className='error-msg'>
+                   <svg width="1.2em" height="1.2em" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 0 1 7-7m0 2a5 5 0 0 0-5 5c0 1 0 3 5 9.71C17 12 17 10 17 9a5 5 0 0 0-5-5m-1 2h2v5h-2V6m0 7h2v2h-2v-2z" fill="currentColor"></path></svg>
                          {errorState.password}</span>
                
                   </div>
@@ -111,7 +110,17 @@ export function SignUp(){
           <div>
                  <label>Confirm-Password:</label>
                  <div className='input-error-div'>
-                      <InputFieldForPassword mask={mask} clearingError={clearingError} formDispatch={formDispatch} type="SET-CONFIRM-PASSWORD"/>
+                 <input
+             type={mask?'password':'text'}
+             placeholder="Enter the Password"
+            onChange={(event) =>
+              formDispatch({
+                type: 'SET-CONFIRM-PASSWORD',
+                payload: event.target.value
+            })  
+        }
+        onFocus={()=>clearingError('SET_CONFIRM_PASSWORD_ERR')}
+        />
                       <Mask mask={mask} setMask={setMask}/>
                       <span  style={{display:errorState.confirmPassword?"flex":'none'}} className='error-msg'>
                       <svg width="1.2em" height="1.2em" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 0 1 7-7m0 2a5 5 0 0 0-5 5c0 1 0 3 5 9.71C17 12 17 10 17 9a5 5 0 0 0-5-5m-1 2h2v5h-2V6m0 7h2v2h-2v-2z" fill="currentColor"></path></svg>

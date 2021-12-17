@@ -1,22 +1,16 @@
 import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts';
-import { Profile } from '../../Routes';
+import { loginHandler } from '../axios/axios';
 import './loginCard.css'
 export function Login(){
-    const{authState:{login,userName,password},authDispatch, loginWithUserCredentials}=useAuth();
+    const{authState,authDispatch}=useAuth();
     const {state}=useLocation();
     const navigate=useNavigate();
 
-    function loginHandler(event,state,userName,password,navigate){
-        event.preventDefault () 
-        loginWithUserCredentials(state,userName,password,navigate);
-    }
-    return(
-        
+    return( 
         <>
-        {login?<Profile/>:
-            <form className='loginCard' onSubmit={(event)=>loginHandler(event,state,userName,password,navigate)}>
+            <form className='loginCard' onSubmit={(event)=>loginHandler(event,{state,userName:authState.userName,password:authState.password,authDispatch,navigate})}>
                 <div >
                     <label> UserName : </label>
                     <input type='text' onChange={(event)=>authDispatch({type:'SET-USER-NAME',payload:event.target.value})}/>
@@ -26,14 +20,19 @@ export function Login(){
                     <input type='password' onChange={(event)=>authDispatch({type:'SET-PASSWORD',payload:event.target.value})}/>
                 </div>
                 <button className='btn-logIn'>LogIn</button>
+                <button className='btn-logIn' onClick={(event)=>{authDispatch({type:'SET-USER-NAME',payload:"admin@gmail.com"})
+                                                                          authDispatch({type:'SET-PASSWORD',payload:"admin@A1"})
+                                                                          loginHandler(event,{state,userName:'admin@gmail.com',password:'admin@A1',authDispatch,navigate})  
+            }}>LogIn With Test Credentials</button>
                 <div >
                 New user?
                 <Link to='/signUp'>
                      <span className='signUp'>SignUp</span>
                 </Link>
             </div>
+            
             </form>
-}
+
         </>
     )
 }
