@@ -1,4 +1,4 @@
-export function loginReducer(state,{type,payload}){
+export function authReducer(state,{type,payload}){
     switch(type){
         case 'SET-USER-NAME':
             return {...state,userName:payload}
