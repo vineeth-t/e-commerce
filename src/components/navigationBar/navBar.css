@@ -148,14 +148,13 @@ align-items: center;
     }
     .nav-hambug-profile{
         background-color: var(--secondary-color);
-        height:15vh;
-        position: relative
+        height:18vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
-    .svg-profile{
-       position: absolute;
-        top:2em;
-        left:3.5em;
-    }
+
     .hambug-items{
         margin-left: 0.5rem;
         display: flex;
@@ -168,5 +167,8 @@ align-items: center;
     .active{
         font-size:x-large;
         font-weight:bolder;
+    }
+    .nav-user{
+        color:var(--primary-color)
     }
 }

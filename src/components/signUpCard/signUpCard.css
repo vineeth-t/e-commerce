@@ -31,7 +31,7 @@
     margin-top: 0.4rem;
   }
   .signup-form label {
-     width:35%;
+     width:30%;
     margin: 0.7rem;
   }
   .input-error-div{
@@ -40,7 +40,7 @@
 justify-content: flex-start;
   }
   .input-error-div input{
-    width:65%;
+    width:100%;
     margin: 0.7rem;
   }
   .signUp-footer{
@@ -49,7 +49,7 @@ justify-content: flex-start;
  .mask-icon{
    position: absolute;
    top:0.9rem;
-   right:3.5rem;
+   right:0.48rem;
    background-color: white;
    border:none;
 
@@ -58,10 +58,8 @@ justify-content: flex-start;
  .error-msg{
    display: flex;
    color:rgb(235, 70, 70);
-   font-size:small;
+   font-size:smaller;
    position: absolute;
    top:2.4rem;
-   left:3rem;
-
-
+   left:0rem;
  }
