@@ -9,7 +9,6 @@ export function stateReducer(state,{type,payload,toast}){
         case 'ADD_ADDRESS_DETAILS':
             return{...state,address:[...state.address,payload],note:''}
         case 'CURRENT_ADDRESS':
-            console.log({payload})
             return{...state,currentAddress:payload,note:''}
         case 'REMOVE_TOAST':
             return{
