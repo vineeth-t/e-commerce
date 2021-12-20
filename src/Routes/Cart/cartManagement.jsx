@@ -1,9 +1,10 @@
-import { useStateContext } from "../../contexts/state-context";
 import { decrementQuantity, incrementQuantity, removeFromCart } from "../../components/axios/axios";
 import './cart.css';
 import { AddressCard, AdressModal } from "../../components/addressCard/addressCard";
 import { useState } from "react";
+import { useAuth,useStateContext } from "../../contexts";
 export function Cart(){
+    const{authState:{userId}}=useAuth()
     const[address,setAddress]=useState(false)
     let totalAmount=0.0;
     const {state,dispatch}=useStateContext();
@@ -25,7 +26,8 @@ return (
             </div>
             <div>
                 <div>
-                    {state.cartItems.map(({id,name,image,price,quantity,inStock})=>{
+                    {state.cartItems.map(({product,quantity})=>{
+                        const {_id,name,image,price}= product
                         // const productItem={id,name,image,price,quantity,inStock}
                         totalAmount=totalAmount + ( (quantity)*parseInt( price, 10 ))
                     return (
@@ -38,14 +40,14 @@ return (
                                                             <h5>Rs/-{(quantity)*price}</h5>
                                                             </div>
                                                             <section className='button-qty'>
-                                                                <button onClick={()=>decrementQuantity(id,dispatch)} className='btn-primary'>-</button>
+                                                                <button onClick={()=>decrementQuantity(_id,dispatch,userId)} className='btn-primary'>-</button>
                                                                 <span className='quantity'>{quantity}</span> 
-                                                                <button onClick={()=>incrementQuantity(id,dispatch)} className='btn-primary'>+</button>
+                                                                <button onClick={()=>incrementQuantity(_id,dispatch,userId)} className='btn-primary'>+</button>
                                                             </section>
                                                             <section className='btn-section'>
                                                                  {/* <button className='btn btn-wishlist' onClick={()=>addToWatchlist(productItem,dispatch)}>Wishlist</button> */}
-                                                                 <button className='btn btn-remove' onClick={()=>removeFromCart(id,dispatch)}>Remove</button>
-                                                                 <button className='btn btn-remove-icon' onClick={()=>removeFromCart(id,dispatch)}><svg width="2em" height="2em" viewBox="0 0 24 24"><path d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12z"  fill="currentColor"></path></svg></button>
+                                                                 <button className='btn btn-remove' onClick={()=>removeFromCart(_id,dispatch)}>Remove</button>
+                                                                 <button className='btn btn-remove-icon' onClick={()=>removeFromCart(_id,dispatch)}><svg width="2em" height="2em" viewBox="0 0 24 24"><path d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12z"  fill="currentColor"></path></svg></button>
                                                             </section>
                                                         </div> 
                                                     </div> 

@@ -49,13 +49,18 @@ export function StateProvider({children}){
     }(),[userId])
     useEffect(()=>async function(){
         try{
-            const {data:{response}}=await axios.get('https://JungleClap-Express-Server.vineetht.repl.co/cart')
-            console.log(response)
-            dispatch({type:'SET_CART_ITEMS',payload:response})
+            const {data:{response,cartItems}}=await axios.get(`https://JungleClap-Express-Server.vineetht.repl.co/cart/${userId}`)
+            console.log(cartItems)
+            if(response){
+              dispatch({type:'SET_CART_ITEMS',payload:cartItems})
+            }else{
+              dispatch({type:'TOAST',payload:'Internal Server Error, Refresh'})
+            }
+           
           }catch(error){
             console.log(error)
           }
-    }(),[])
+    }(),[userId])
     return(
         <StateContext.Provider value={{state,dispatch,loader}}>
             {children}

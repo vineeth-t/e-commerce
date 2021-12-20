@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
-import { useStateContext } from "../../contexts/state-context"
+import { useAuth,useStateContext } from "../../contexts";
 import { addToCart } from '../axios/axios';
-export function CartButton(productId){
+export function CartButton({productId}){
+    const{authState:{userId}}=useAuth();
     const {state:{cartItems},dispatch}=useStateContext()
     return cartItems.some((item)=>item.id===productId) ?
         <Link to='/cart'>
@@ -9,7 +10,7 @@ export function CartButton(productId){
                Go to Cart
            </button>
            </Link> :
-           <button className='btn-add2Cart' onClick={()=>addToCart(productId,dispatch)}>
+           <button className='btn-add2Cart' onClick={()=>addToCart(productId,dispatch,userId)}>
                Add to cart
            </button>
        

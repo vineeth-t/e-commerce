@@ -22,13 +22,18 @@ export async function removeFromWatchlist(productId,dispatch,userId){
         console.log(error)
     }
 }
-export async function addToCart(productItem,dispatch){
+export async function addToCart(productId,dispatch,userId){
     try{
-        const {data:{response}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/cart`,productItem)
-        dispatch({type:'SET_CART_ITEMS',payload:response,toast:'Added to Cart'})
-    }catch(error){
-        console.log(error)
-    }
+        const {data:{response,cartItems}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/cart/${userId}`,{productId})
+        console.log(cartItems)
+        if(response){
+          dispatch({type:'SET_CART_ITEMS',payload:cartItems})
+        }else{
+          dispatch({type:'TOAST',payload:'Internal Server Error, Refresh'})
+        }
+}catch(error){
+    console.log(error)
+}
 }
 export async function removeFromCart(id,dispatch){
     try{
@@ -38,21 +43,31 @@ export async function removeFromCart(id,dispatch){
         console.log(error)
     }
 }
-export async function incrementQuantity(id,dispatch){
+export async function incrementQuantity(productId,dispatch,userId){
     try{
-        const {data:{response}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/cart/${id}`,{flag:'INC'})
-        dispatch({type:'SET_CART_ITEMS',payload:response})
-    }catch(error){
-        console.log(error)
-    }
+        const {data:{response,cartItems}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/cart/${userId}`,{productId,flag:'INC'})
+        console.log(cartItems)
+        if(response){
+          dispatch({type:'SET_CART_ITEMS',payload:cartItems})
+        }else{
+          dispatch({type:'TOAST',payload:'Internal Server Error, Refresh'})
+        }
+}catch(error){
+    console.log(error)
 }
-export async function decrementQuantity(id,dispatch){
+}
+export async function decrementQuantity(productId,dispatch,userId){
     try{
-        const {data:{response}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/cart/${id}`,{flag:'DEC'})
-        dispatch({type:'SET_CART_ITEMS',payload:response})
-    }catch(error){
-        console.log(error)
-    }
+        const {data:{response,cartItems}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/cart/${userId}`,{productId,flag:'DEC'})
+        console.log(cartItems)
+        if(response){
+          dispatch({type:'SET_CART_ITEMS',payload:cartItems})
+        }else{
+          dispatch({type:'TOAST',payload:'Internal Server Error, Refresh'})
+        }
+}catch(error){
+    console.log(error)
+}
 }
 
 export async function signUpHandler(e,navigate,formChecker,formState,errorDispatch,authDispatch){
