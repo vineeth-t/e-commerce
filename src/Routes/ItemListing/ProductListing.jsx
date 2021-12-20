@@ -5,9 +5,9 @@ import {DataFiltering} from '../../components'
 import { useDataFilter } from '../../contexts';
 import { getFilterData, getSortedData } from '../../reducers/filterReducer';
 export function ProductItemsListing( {setState}){
-   const{loader,items,setToast}= useStateContext();
+   const{state:{products},loader,setToast}= useStateContext();
    const{state:{sortBy,toggleInventory,showJCAssured}}=useDataFilter();
-   const sortedData=getSortedData(items,sortBy)
+   const sortedData=getSortedData(products,sortBy)
    const filterData=getFilterData(sortedData,{
                                                 toggleInventory,
                                                 showJCAssured
@@ -21,7 +21,7 @@ return (
         {filterData.map((productItem)=>{
             return (
                <ProductCard
-                key={productItem.id}
+                key={productItem._id}
                 productItem={productItem}
                setToast={setToast}
                setState={setState}
