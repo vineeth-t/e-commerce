@@ -5,15 +5,15 @@ import {StateProvider,FilterDataProvider,Auth} from './contexts/index'
 import { BrowserRouter as Router } from "react-router-dom";
 ReactDOM.render(
   <React.StrictMode>
-    <StateProvider>
-      <FilterDataProvider>
-        <Router>
-          <Auth>
-            <App />
-          </Auth>
-        </Router>
-      </FilterDataProvider>
-    </StateProvider>
+    <Auth>
+      <StateProvider>
+        <FilterDataProvider>
+          <Router>
+              <App />
+          </Router>
+        </FilterDataProvider>
+      </StateProvider>
+    </Auth>
   </React.StrictMode>,
   document.getElementById('root')
 );
