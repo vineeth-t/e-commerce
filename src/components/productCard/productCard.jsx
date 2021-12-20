@@ -2,7 +2,7 @@ import './card.css'
 import { WishListButton } from '../wishListButton';
 import { CartButton } from '..';
 export function ProductCard({productItem}){
-    const {name,image,price,fastDelivery,inStock}=productItem;
+    const {_id,name,image,price,fastDelivery,inStock}=productItem;
     const cardStyle=inStock?'card-overlay':'card-OutOfStock'
     return (
         <>
@@ -14,9 +14,9 @@ export function ProductCard({productItem}){
                 <span className="Item Item-discountPercentage">(50% off) </span>
                 {fastDelivery&&<div className='badgeOnCard'>Fast Delivery</div>}
                 {inStock? <>
-                    <WishListButton productItem={productItem}/>
+                    <WishListButton productId={_id}/>
                 <br/>
-                 <CartButton productItem={productItem}/>
+                 <CartButton productId={_id}/>
             </>:<h4>OutOfStock</h4>}
         </div>
        

@@ -1,7 +1,6 @@
 import {useStateContext} from '../../contexts/state-context';
 import './wishlist.css'
 import { ProductCard } from '../../components';
-
 export function Wishlist(){
    const {state:{wishListItems}}=useStateContext();
     return(
@@ -14,13 +13,12 @@ export function Wishlist(){
             </div>
            
             <div className='wishlist-items'>
-            {wishListItems.map((productItem)=>{
-                console.log(productItem)
+            {wishListItems.map(({product})=>{
                 return(
                    <div>
                         <ProductCard 
-                             key={productItem.id}
-                             productItem={productItem}
+                             key={product._id}
+                             productItem={product}
                         />
                     </div>
                 )
