@@ -33,9 +33,13 @@ export function NavBar(){
                             <NavLink to='/products'  onClick={()=>{
                               sethambug('hambug')
                               }}>Products</NavLink>
-                            <NavLink to='/login' onClick={()=>{
+                            {login?<NavLink to='/profile' onClick={()=>{
                               sethambug('hambug')
-                              }}>Login</NavLink>
+                              }}>    
+                           Profile
+                          </NavLink>:<NavLink to='/login' onClick={()=>{
+                              sethambug('hambug')
+                              }}>Login</NavLink>}
                             <button className='hambug-close' onClick={()=>sethambug('hambug')}>X</button>
                         </div>
                    </div>
