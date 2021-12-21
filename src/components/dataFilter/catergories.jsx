@@ -6,7 +6,7 @@ export function Catergories({showtheFilter,setTheFilter}){
       <h3>Filters</h3>
      {showtheFilter==='filter-card'&& <button style={{backgroundColor:'inherit'}} onClick={()=>setTheFilter('')}>X</button>}
     </div>
-    <div className='filterCard-radio-btn'>
+    {/* <div className='filterCard-radio-btn'>
         <h4>Categories</h4>
          <label>
              <input type ='checkbox'/>
@@ -51,7 +51,7 @@ export function Catergories({showtheFilter,setTheFilter}){
              <input type ='checkbox' />
                Jbl
         </label>
-    </div>
+    </div> */}
     <div className='filterCard-radio-btn'>
         <h4>Others</h4>
         <label>

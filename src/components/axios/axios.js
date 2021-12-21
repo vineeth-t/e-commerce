@@ -107,3 +107,44 @@ export async function signUpHandler(e,navigate,formChecker,formState,errorDispat
       }
     
   }
+  export async function getproductFromDB(setLoader,dispatch){
+    try{
+        const {data:{response,products}} = await axios.get('https://JungleClap-Express-Server.vineetht.repl.co/products')
+        if(response){
+          dispatch({type:'SET_PRODUCTS',payload:products})
+        }else{
+          dispatch({type:'TOAST',toast:'Refresh the Page'})
+        }
+ 
+    }catch(error){
+        console.log(error)
+    }finally{
+    setLoader(false)
+    }
+  }
+   export async function getCartItemsFromDB(userId,dispatch){
+    try{
+        const {data:{response,cartItems}}=await axios.get(`https://JungleClap-Express-Server.vineetht.repl.co/cart/${userId}`)
+        console.log(cartItems)
+        if(response){
+          dispatch({type:'SET_CART_ITEMS',payload:cartItems})
+        }else{
+          dispatch({type:'TOAST',payload:'Internal Server Error, Refresh'})
+        }
+       
+      }catch(error){
+        console.log(error)
+      }
+  }
+
+  export async function getWishListedItemsFromDB(userId,dispatch){
+    try{
+        const {data:{response,wishlistItems}}=await axios.get(`https://JungleClap-Express-Server.vineetht.repl.co/wishlist/${userId}`)
+        console.log(wishlistItems)
+        if(response){
+            dispatch({type:'SET_WISHLIST',payload:wishlistItems})
+        }
+      }catch(error){
+        console.log(error)
+      }
+  }
