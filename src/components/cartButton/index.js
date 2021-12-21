@@ -3,8 +3,9 @@ import { useAuth,useStateContext } from "../../contexts";
 import { addToCart } from '../axios/axios';
 export function CartButton({productId}){
     const{authState:{userId}}=useAuth();
-    const {state:{cartItems},dispatch}=useStateContext()
-    return cartItems.some((item)=>item.id===productId) ?
+    const {state:{cartItems},dispatch}=useStateContext();
+    console.log({cartItems})
+    return cartItems.some(({product})=>product._id===productId) ?
         <Link to='/cart'>
            <button className='btn-add2Cart'>
                Go to Cart
