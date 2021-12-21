@@ -1,11 +1,11 @@
 import { useReducer } from 'react';
 import { useStateContext } from '../../contexts/state-context';
-import { addressErrorHandler, addressErrorHandlerReducer, addressreducer } from '../../reducers/addressReducer';
+import { addressHandler, addressErrorHandlerReducer, addressreducer } from '../../reducers/addressReducer';
 export function AddressForm({setAddressForm}){
 const [error,dispatchError]=useReducer(addressErrorHandlerReducer,{});
 const{dispatch}=useStateContext();
 const [addressDetails, addressDispatch] = useReducer(addressreducer, {
-    name:'',
+    name:"",
     houseNo: "",
     streetName: "",
     landmark: "",
@@ -107,10 +107,4 @@ function clearingError(type){
                 <button className='btn' onClick={()=> setAddressForm(false)} type='button'>Cancel</button>
             </form>
       } 
-export function addressHandler(e,addressDetails,dispatch,dispatchError,setAddressForm){
-        e.preventDefault();
-        if(addressErrorHandler(addressDetails,dispatchError)){
-            dispatch({type:'ADD_ADDRESS_DETAILS',payload:addressDetails});
-            setAddressForm(false)
-        }
-    }
+

@@ -10,16 +10,17 @@ export function StateProvider({children}){
                                                   cartItems,
                                                   wishListItems,
                                                   toast,
-                                                  address:[],
-                                                  currentAddress:{
-                                                                    name:'Alex Carey',
-                                                                    houseNo: "4-46",
-                                                                    streetName: "sree ram nagar ",
-                                                                    landmark: "vartha office",
-                                                                    city: "khammam",
-                                                                    district: "khammmam",
-                                                                    pincode:507101
-                                                                  }})
+                                                  address:[{
+                                                    name:'Alex Carey',
+                                                    houseNo: "4-46",
+                                                    streetName: "sree ram nagar ",
+                                                    landmark: "vartha office",
+                                                    city: "khammam",
+                                                    district: "khammmam",
+                                                    pincode:507101
+                                                  }],
+                                                  currentAddress:{}
+                                                 })
     const[loader,setLoader]=useState(false);
     useEffect(()=>async function(){
         setLoader(true);
