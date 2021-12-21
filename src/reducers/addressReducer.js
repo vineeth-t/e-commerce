@@ -1,5 +1,7 @@
 export function addressreducer(state, { type, payload }) {
   switch(type){
+    case 'SET_NAME':
+        return {...state,name:payload}
     case 'SET_HOUSE_NO':
         return {...state,houseNo:payload}
     case 'SET_STREET_NAME':
@@ -18,9 +20,13 @@ export function addressreducer(state, { type, payload }) {
     
   }
 export function addressErrorHandler(addressDetails,dispatchError){
-  const { houseNo,streetName,landmark,city,district,pincode } = addressDetails;
+  const {name, houseNo,streetName,landmark,city,district,pincode } = addressDetails;
   console.log(addressDetails)
   let flag=true;
+  if(name===''){
+    dispatchError({type:'SET_NO_NAME_ERR',payload:'Name Required'})
+    flag=false
+  }
   if(houseNo===''){
     dispatchError({type:'SET_HOUSE_NO_ERR',payload:'House No Required'})
     flag=false
@@ -47,6 +53,8 @@ export function addressErrorHandler(addressDetails,dispatchError){
 }
 export function addressErrorHandlerReducer(state, { type, payload }){
   switch(type){
+    case 'SET_NO_NAME_ERR':
+        return {...state,name:payload}
     case 'SET_HOUSE_NO_ERR':
         return {...state,houseNo:payload}
     case 'SET_STREET_NAME_ERR':

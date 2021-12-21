@@ -5,11 +5,11 @@ import './addressCard.css'
 import { AddressForm } from './addressForm';
 export function AddressCard({setAddress}){
     const{state:{currentAddress}}=useStateContext();
-    const{houseNo,streetName,landmark,city,district,pincode}=currentAddress
+    const{name,houseNo,streetName,landmark,city,district,pincode}=currentAddress
     console.log({houseNo,streetName,landmark,city,district,pincode})
     return <div className='address-container'>  
         <small className='address-details'>
-            <h6>Deliver To:</h6> Alex carey <br/>
+            <h6>Deliver To:</h6> {name} <br/>
             <small>{houseNo}, {streetName}, {landmark}, {city},{pincode}</small>
           </small>
           <button className='btn-edit-address' onClick={()=>setAddress(true)}>
@@ -26,11 +26,12 @@ export function AdressModal({setAddress}){
     <div className='address-modal'>
          <h2>Delivery Address </h2>
          {openAddressForm?<AddressForm setAddressForm={setAddressForm}/>:<ul className='address-list'>       
-            {address?.map(({houseNo,streetName,landmark,city,district,pincode})=>{
+            {address?.map(({name,houseNo,streetName,landmark,city,district,pincode})=>{
                         return <div className='addresses'>
                                     <input type='radio' name='radio' onClick={()=>{setAddress(false);dispatch({type:'CURRENT_ADDRESS',payload:{houseNo,streetName,landmark,city,district,pincode}})}}/>
                                 <span className='address-li'>
                                     <li >
+                                        <p>{name}</p>
                                         <p>{houseNo}</p>
                                         <p>{streetName}</p>
                                         <p>{landmark}</p>
