@@ -75,18 +75,17 @@ export async function decrementQuantity(productId,dispatch,userId){
 }
 }
 
-export async function signUpHandler(e,navigate,formChecker,formState,errorDispatch,authDispatch){
+export async function signUpHandler(e,navigate,formChecker,formState,errorDispatch,authDispatch,dispatch){
     e.preventDefault();
     if(formChecker(formState,errorDispatch)) {
-        const {data:{response,userId}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/signUp`,{firstname:formState.fname,lastname:formState.lname,username:formState.emailId,
+        const {data:{response,userId,message}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/signUp`,{firstname:formState.fname,lastname:formState.lname,username:formState.emailId,
         password:formState.password}) 
         if(response){
             localStorage?.setItem('login',JSON.stringify({isUserLoggedIn:true,userName:formState.fname,userId:userId}))
             authDispatch({type:'LOGIN',payload:{fname:formState.fname,userId:userId}})
             navigate('/profile')
         }else{
-            navigate('/signUp')
-            alert('something went wrong!')
+          dispatch({type:'TOAST',payload:message})
         }
             
     }                             
@@ -94,16 +93,19 @@ export async function signUpHandler(e,navigate,formChecker,formState,errorDispat
 
   export async function loginHandler(event,loginDetails){
       event.preventDefault ();
-      const{state,userName,password,authDispatch,navigate}=loginDetails
+      const{state,userName,password,authDispatch,navigate,dispatch}=loginDetails
       try{
-        const {data:{response,fname,userId}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/logIn`,{username:userName,password:password})
+        const {data:{response,fname,userId,message}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/logIn`,{username:userName,password:password})
         if(response){
             localStorage?.setItem('login',JSON.stringify({isUserLoggedIn:true,userName:fname,userId:userId}))
             authDispatch({type:'LOGIN',payload:{fname,userId}})
             navigate(state?.from?state.from:'/profile')
+        }else{
+          dispatch({type:'TOAST',payload:message})
         }
       }catch(error){
           console.log(error)
+          dispatch({type:'TOAST',payload:error})
       }
     
   }

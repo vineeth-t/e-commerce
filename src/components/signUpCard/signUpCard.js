@@ -1,14 +1,15 @@
 import { useReducer, useState } from "react";
 import { useNavigate,Navigate } from "react-router";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../contexts/index";
+import { useAuth,useStateContext } from "../../contexts/index";
 import {signUpreducer, errorHandler, formChecker } from "../../reducers/index";
 import { signUpHandler } from "../axios/axios";
 import { Mask } from "./inputFieldForPAssword";
 import './signUpCard.css'
 export function SignUp(){
   const navigate = useNavigate();
-  const{authState:{login},authDispatch}=useAuth()
+  const{authState:{login},authDispatch}=useAuth();
+  const{disptach}=useStateContext()
   const [formState, formDispatch] = useReducer(signUpreducer, {
     fname: "",
     lname: "",
@@ -27,7 +28,7 @@ export function SignUp(){
         <h2>SIGN-UP</h2><br/>
         <h4>sign up to watch amazing videos</h4><br/>
         <form
-          onSubmit={(e) =>signUpHandler( e,navigate,formChecker,formState,errorDispatch,authDispatch)}
+          onSubmit={(e) =>signUpHandler( e,navigate,formChecker,formState,errorDispatch,authDispatch,disptach)}
           className="signup-form">
           <div>
               <label> First Name:</label>
