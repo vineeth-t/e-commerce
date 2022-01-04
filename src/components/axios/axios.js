@@ -1,8 +1,9 @@
 import axios from "axios";
 
+export const API='https://JungleClap-Express-mongoose-Server.vineetht.repl.co'
 export async function addToWatchlist(productId,dispatch,userId){
     try{
-        const {data:{response,wishlistItems}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/wishlist/${userId}`,{productId})
+        const {data:{response,wishlistItems}}=await axios.post(`${API}/wishlist/${userId}`,{productId})
         if(response){
             dispatch({type:'SET_WISHLIST',payload:wishlistItems,toast:'Added to Wishlist'})
         }
@@ -13,7 +14,7 @@ export async function addToWatchlist(productId,dispatch,userId){
 }
 export async function removeFromWatchlist(productId,dispatch,userId){
     try{
-        const {data:{response,wishlistItems}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/wishlist/${userId}`,{productId})
+        const {data:{response,wishlistItems}}=await axios.post(`${API}/wishlist/${userId}`,{productId})
         if(response){
             dispatch({type:'SET_WISHLIST',payload:wishlistItems,toast:'Removed From wishlist'})
         }
@@ -24,7 +25,7 @@ export async function removeFromWatchlist(productId,dispatch,userId){
 }
 export async function addToCart(productId,dispatch,userId){
     try{
-        const {data:{response,cartItems}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/cart/${userId}`,{productId})
+        const {data:{response,cartItems}}=await axios.post(`${API}/cart/${userId}`,{productId})
         console.log(cartItems)
         if(response){
           dispatch({type:'SET_CART_ITEMS',payload:cartItems,toast:'Added to Cart'})
@@ -37,7 +38,7 @@ export async function addToCart(productId,dispatch,userId){
 }
 export async function removeFromCart(productId,dispatch,userId){
     try{
-        const {data:{response,cartItems}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/cart/${userId}`,{productId,flag:'DELETE'})
+        const {data:{response,cartItems}}=await axios.post(`${API}/cart/${userId}`,{productId,flag:'DELETE'})
         console.log(cartItems)
         if(response){
           dispatch({type:'SET_CART_ITEMS',payload:cartItems,toast:'Removed From Cart'})
@@ -50,7 +51,7 @@ export async function removeFromCart(productId,dispatch,userId){
 }
 export async function incrementQuantity(productId,dispatch,userId){
     try{
-        const {data:{response,cartItems}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/cart/${userId}`,{productId,flag:'INC'})
+        const {data:{response,cartItems}}=await axios.post(`${API}/cart/${userId}`,{productId,flag:'INC'})
         console.log(cartItems)
         if(response){
           dispatch({type:'SET_CART_ITEMS',payload:cartItems})
@@ -63,7 +64,7 @@ export async function incrementQuantity(productId,dispatch,userId){
 }
 export async function decrementQuantity(productId,dispatch,userId){
     try{
-        const {data:{response,cartItems}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/cart/${userId}`,{productId,flag:'DEC'})
+        const {data:{response,cartItems}}=await axios.post(`${API}/cart/${userId}`,{productId,flag:'DEC'})
         console.log(cartItems)
         if(response){
           dispatch({type:'SET_CART_ITEMS',payload:cartItems})
@@ -78,7 +79,7 @@ export async function decrementQuantity(productId,dispatch,userId){
 export async function signUpHandler(e,navigate,formChecker,formState,errorDispatch,authDispatch,dispatch){
     e.preventDefault();
     if(formChecker(formState,errorDispatch)) {
-        const {data:{response,userId,message}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/signUp`,{firstname:formState.fname,lastname:formState.lname,username:formState.emailId,
+        const {data:{response,userId,message}}=await axios.post(`${API}/signUp`,{firstname:formState.fname,lastname:formState.lname,username:formState.emailId,
         password:formState.password}) 
         if(response){
             localStorage?.setItem('login',JSON.stringify({isUserLoggedIn:true,userName:formState.fname,userId:userId}))
@@ -95,7 +96,7 @@ export async function signUpHandler(e,navigate,formChecker,formState,errorDispat
       event.preventDefault ();
       const{state,userName,password,authDispatch,navigate,dispatch}=loginDetails
       try{
-        const {data:{response,fname,userId,message}}=await axios.post(`https://JungleClap-Express-Server.vineetht.repl.co/logIn`,{username:userName,password:password})
+        const {data:{response,fname,userId,message}}=await axios.post(`${API}/logIn`,{username:userName,password:password})
         if(response){
             localStorage?.setItem('login',JSON.stringify({isUserLoggedIn:true,userName:fname,userId:userId}))
             authDispatch({type:'LOGIN',payload:{fname,userId}})
@@ -111,7 +112,7 @@ export async function signUpHandler(e,navigate,formChecker,formState,errorDispat
   }
   export async function getproductFromDB(setLoader,dispatch){
     try{
-        const {data:{response,products}} = await axios.get('https://JungleClap-Express-Server.vineetht.repl.co/products')
+        const {data:{response,products}} = await axios.get(`${API}/products`)
         if(response){
           dispatch({type:'SET_PRODUCTS',payload:products})
         }else{
@@ -126,7 +127,7 @@ export async function signUpHandler(e,navigate,formChecker,formState,errorDispat
   }
    export async function getCartItemsFromDB(userId,dispatch){
     try{
-        const {data:{response,cartItems}}=await axios.get(`https://JungleClap-Express-Server.vineetht.repl.co/cart/${userId}`)
+        const {data:{response,cartItems}}=await axios.get(`${API}/cart/${userId}`)
         console.log(cartItems)
         if(response){
           dispatch({type:'SET_CART_ITEMS',payload:cartItems})
@@ -141,7 +142,7 @@ export async function signUpHandler(e,navigate,formChecker,formState,errorDispat
 
   export async function getWishListedItemsFromDB(userId,dispatch){
     try{
-        const {data:{response,wishlistItems}}=await axios.get(`https://JungleClap-Express-Server.vineetht.repl.co/wishlist/${userId}`)
+        const {data:{response,wishlistItems}}=await axios.get(`${API}/wishlist/${userId}`)
         console.log(wishlistItems)
         if(response){
             dispatch({type:'SET_WISHLIST',payload:wishlistItems})
