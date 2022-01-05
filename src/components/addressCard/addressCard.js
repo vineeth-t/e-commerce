@@ -19,13 +19,13 @@ export function AddressCard({setAddress}){
 }
 
 export function AdressModal({setAddress}){
-    const{state:{address},dispatch}=useStateContext();
+    const{state:{address_details},dispatch}=useStateContext();
     const[openAddressForm,setAddressForm]=useState(false)
     return(
     <div className='address-modal'>
          <h2>Delivery Address </h2>
          {openAddressForm?<AddressForm setAddressForm={setAddressForm}/>:<ul className='address-list'>       
-            {address?.map(({name,houseNo,streetName,landmark,city,district,pincode})=>{
+            {address_details?.map(({name,houseNo,streetName,landmark,city,district,pincode})=>{
                         return <div className='addresses'>
                                     <input type='radio' name='radio' onClick={()=>{setAddress(false);dispatch({type:'CURRENT_ADDRESS',payload:{name,houseNo,streetName,landmark,city,district,pincode}})}}/>
                                 <span className='address-li'>

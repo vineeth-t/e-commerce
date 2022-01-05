@@ -4,21 +4,22 @@ import {stateReducer} from '../reducers/stateReducer';
 export const StateContext= createContext();
 export function StateProvider({children}){
   const[loader,setLoader]=useState(false);
+  let initalAddress={
+    name:'Alex Carey',
+    houseNo: "4-46",
+    streetName: "sree ram nagar ",
+    landmark: "vartha office",
+    city: "khammam",
+    district: "khammmam",
+    pincode:507101
+  }
     const[state,dispatch]=useReducer(stateReducer,{
                                                   products,
                                                   cartItems,
                                                   wishListItems,
                                                   toast,
-                                                  address:[{
-                                                    name:'Alex Carey',
-                                                    houseNo: "4-46",
-                                                    streetName: "sree ram nagar ",
-                                                    landmark: "vartha office",
-                                                    city: "khammam",
-                                                    district: "khammmam",
-                                                    pincode:507101
-                                                  }],
-                                                  currentAddress:{}
+                                                  address_details:[initalAddress],
+                                                  currentAddress:initalAddress
                                                  })
  useEffect(()=>
             async function(){
