@@ -1,10 +1,9 @@
-import {useEffect, createContext, useContext, useState, useReducer } from "react";
+import {createContext, useContext,useEffect,useReducer, useState } from "react";
+import { getproductFromDB } from "../components/axios/axios";
 import {stateReducer} from '../reducers/stateReducer';
-import {useAuth} from './index'
-import { getCartItemsFromDB, getproductFromDB, getWishListedItemsFromDB } from "../components/axios/axios";
 export const StateContext= createContext();
 export function StateProvider({children}){
-  const{authState:{userId}} =useAuth();
+  const[loader,setLoader]=useState(false);
     const[state,dispatch]=useReducer(stateReducer,{
                                                   products,
                                                   cartItems,
@@ -21,16 +20,12 @@ export function StateProvider({children}){
                                                   }],
                                                   currentAddress:{}
                                                  })
-    const[loader,setLoader]=useState(false);
-    useEffect(()=>async function(){
-        setLoader(true);
-        getproductFromDB(setLoader,dispatch)
-        
-    }(),[])
-    useEffect(()=>async function(){
-      getCartItemsFromDB(userId,dispatch);
-      getWishListedItemsFromDB(userId,dispatch)
-    }(),[userId])
+ useEffect(()=>
+            async function(){
+                          setLoader(true);
+                          getproductFromDB(setLoader,dispatch)
+                                                  
+        }(),[])
     return(
         <StateContext.Provider value={{state,dispatch,loader}}>
             {children}
