@@ -91,44 +91,50 @@ export async function signUpHandler(e,navigate,formChecker,formState,errorDispat
             
     }                             
   }
-
+ export  function setupAuthHeaderForServiceCalls(token) {
+    if (token) {
+      return (axios.defaults.headers.common["Authorization"] = token);
+    }
+    delete axios.defaults.headers.common["Authorization"];
+  }
   export async function loginHandler(event,loginDetails){
       event.preventDefault ();
       const{state,userName,password,authDispatch,navigate,dispatch}=loginDetails
       try{
-        const {data:{response,fname,userId,message}}=await axios.post(`${API}/logIn`,{username:userName,password:password})
+        const {data:{response,fname,userId,message,token}}=await axios.post(`${API}/login`,{username:userName,password:password})
         if(response){
-            localStorage?.setItem('login',JSON.stringify({isUserLoggedIn:true,userName:fname,userId:userId}))
-            authDispatch({type:'LOGIN',payload:{fname,userId}})
+            setupAuthHeaderForServiceCalls(token)
+            localStorage?.setItem('login',JSON.stringify({isUserLoggedIn:true,userName:fname,userId:userId,token:token}))
+            authDispatch({type:'LOGIN',payload:{fname,userId,token}})
             navigate(state?.from?state.from:'/profile')
         }else{
           dispatch({type:'TOAST',payload:message})
         }
       }catch(error){
-          console.log(error)
-          dispatch({type:'TOAST',payload:error})
+          console.log("This is Error",error.response)
+         dispatch({type:'TOAST',payload:error.message})
       }
     
   }
-  export async function getproductFromDB(setLoader,dispatch){
+  export async function getproductFromDB(setLoader,dispatch,token){
     try{
         const {data:{response,products}} = await axios.get(`${API}/products`)
         if(response){
           dispatch({type:'SET_PRODUCTS',payload:products})
         }else{
-          dispatch({type:'TOAST',toast:'Refresh the Page'})
+          dispatch({type:'TOAST',payload:'Refresh the Page'})
         }
  
     }catch(error){
-        console.log(error)
+        console.log(error.message)
+        dispatch({type:'TOAST',toast:error.message})
     }finally{
     setLoader(false)
     }
   }
-   export async function getCartItemsFromDB(userId,dispatch){
+   export async function getCartItemsFromDB(userId,dispatch,navigate){
     try{
         const {data:{response,cartItems}}=await axios.get(`${API}/cart/${userId}`)
-        console.log(cartItems)
         if(response){
           dispatch({type:'SET_CART_ITEMS',payload:cartItems})
         }else{
@@ -136,18 +142,27 @@ export async function signUpHandler(e,navigate,formChecker,formState,errorDispat
         }
        
       }catch(error){
-        console.log(error)
+        console.error(error.response.message);
+   
+        if(error.response.status===404){
+          dispatch({type:'TOAST',payload:'Internal Server Error, Refresh'})
+          navigate('/login')
+        }
+     
       }
   }
 
-  export async function getWishListedItemsFromDB(userId,dispatch){
+  export async function getWishListedItemsFromDB(userId,dispatch,navigate){
     try{
         const {data:{response,wishlistItems}}=await axios.get(`${API}/wishlist/${userId}`)
-        console.log(wishlistItems)
         if(response){
             dispatch({type:'SET_WISHLIST',payload:wishlistItems})
         }
       }catch(error){
-        console.log(error)
+        console.log(error.message);
+        if(error.response.status===404){
+          console.log(error.response.status)
+          navigate('/login')
+        }
       }
   }
