@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
+import { setupAuthHeaderForServiceCalls } from "../components/axios/axios";
 import {authReducer} from '../reducers/authReducer'
 export const AuthContext=  createContext();
 export function Auth({children}){
@@ -9,7 +10,10 @@ export function Auth({children}){
      login=true
      userName=loginStatus.userName
      userId=loginStatus.userId
-     token=loginStatus.token
+     token=loginStatus.token;
+     //this is important because on every refresh header will get refreshed so token is not available
+     //you have to login for every refresh 
+     setupAuthHeaderForServiceCalls(token);
  }else{
      login=false
  }

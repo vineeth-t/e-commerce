@@ -1,16 +1,21 @@
 import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../contexts';
+import { useAuth, useStateContext } from '../../contexts';
 import { loginHandler } from '../axios/axios';
 import './loginCard.css'
 export function Login(){
-    const{authState,authDispatch}=useAuth();
+    const{authState:{userName,password},authDispatch}=useAuth();
+    const{dispatch}=useStateContext()
     const {state}=useLocation();
     const navigate=useNavigate();
-
+    const loginDetails={state,
+                        userName,
+                        password,
+                        authDispatch,
+                        navigate}
     return( 
         <>
-            <form className='loginCard' onSubmit={(event)=>loginHandler(event,{state,userName:authState.userName,password:authState.password,authDispatch,navigate})}>
+            <form className='loginCard' onSubmit={(event)=>loginHandler(event,loginDetails,dispatch)}>
                 <div >
                     <label> UserName : </label>
                     <input type='text' onChange={(event)=>authDispatch({type:'SET-USER-NAME',payload:event.target.value})}/>
