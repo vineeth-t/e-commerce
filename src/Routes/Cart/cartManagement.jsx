@@ -1,4 +1,4 @@
-import { decrementQuantity, incrementQuantity, removeFromCart } from "../../components/axios/axios";
+import { decrementQuantity, incrementQuantity, removeFromCart } from "../../components/axios"
 import './cart.css';
 import { AddressCard, AdressModal } from "../../components/addressCard/addressCard";
 import { useState } from "react";
