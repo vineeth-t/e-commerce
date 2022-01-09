@@ -7,11 +7,10 @@ export function authReducer(state,{type,payload}){
         case 'LOGIN':
             return {...state,login:true,
                              userName:payload.fname,
-                             userId:payload.userId,
                              token:payload.token
                             }
         case 'LOGOUT':
-            return {...state,login:false,userName:'',password:''}
+            return {...state,login:false,userName:'',password:'',token:''}
         default: 
             return {...state}
     }
