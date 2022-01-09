@@ -1,32 +1,36 @@
-import { createContext, useContext, useReducer } from "react";
-import { setupAuthHeaderForServiceCalls } from "../components/axios/axios";
+import { createContext, useContext, useEffect, useReducer } from "react";
+import { useNavigate } from "react-router-dom";
+import { logoutHandler } from "../components/axios/axios.loginSignUp";
+import { setupAuthHeaderForServiceCalls,setupAuthExceptionHandler } from "../components/axios/axios.setup";
 import {authReducer} from '../reducers/authReducer'
 export const AuthContext=  createContext();
-export function Auth({children}){
- let login,userId,token;
- let userName='';
- const loginStatus= JSON.parse(localStorage.getItem('login'));
- if(loginStatus?.isUserLoggedIn){
-     login=true
-     userName=loginStatus.userName
-     userId=loginStatus.userId
-     token=loginStatus.token;
-     //this is important because on every refresh header will get refreshed so token is not available
-     //you have to login for every refresh 
-     setupAuthHeaderForServiceCalls(token);
- }else{
-     login=false
- }
-
-    const[authState,authDispatch]=useReducer(authReducer, {
-                                                      userId,
-                                                      login,
-                                                      userName,
-                                                      password:'',
-                                                      token
-                                                    })
-          
- 
+export function AuthProvider({children}){
+    const navigate=useNavigate()
+    const loginStatus= JSON.parse(localStorage.getItem('login'));
+    let initalState;
+    if(loginStatus?.isUserLoggedIn){
+     initalState={
+        userId:loginStatus.userid,
+        login:true,
+        userName:loginStatus.username,
+        password:'',
+        token:loginStatus.authToken
+      }
+      setupAuthHeaderForServiceCalls(loginStatus.authToken);
+      
+    }else{
+        initalState={
+            userId:'',
+            login:false,
+            userName:'',
+            password:'',
+            token:''
+          }
+    }
+    useEffect(() => {
+		setupAuthExceptionHandler(logoutHandler, navigate,authDispatch);
+	}, [navigate]);
+    const[authState,authDispatch]=useReducer(authReducer, initalState)
   return <AuthContext.Provider value={{authState,authDispatch}}>
                 {children}
         </AuthContext.Provider>
