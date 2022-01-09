@@ -1,14 +1,10 @@
 import { useNavigate } from "react-router"
+import { logoutHandler } from '../../components/axios/axios.loginSignUp'
 import { useAuth } from "../../contexts"
 
 export function Profile(){
     const{authState:{userName},authDispatch}=useAuth();
     const navigate=useNavigate();
-    function logoutHandler(){
-        authDispatch({type:'LOGOUT'})
-        localStorage.removeItem('login')
-        navigate('/login')
-    }
     return(
             <div className='loginCard'>
                 <div className='login-details'>
@@ -17,7 +13,7 @@ export function Profile(){
                     </svg>
                     <h2>{userName}</h2>
                 </div>               
-                <button className='btn-logIn' onClick={logoutHandler}>Logout</button>
+                <button className='btn-logIn' onClick={()=>logoutHandler(authDispatch,navigate)}>Logout</button>
             </div>
        )
 
