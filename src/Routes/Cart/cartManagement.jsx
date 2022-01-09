@@ -2,9 +2,8 @@ import { decrementQuantity, incrementQuantity, removeFromCart } from "../../comp
 import './cart.css';
 import { AddressCard, AdressModal } from "../../components/addressCard/addressCard";
 import { useState } from "react";
-import { useAuth,useStateContext } from "../../contexts";
+import { useStateContext } from "../../contexts";
 export function Cart(){
-    const{authState:{userId}}=useAuth()
     const[address,setAddress]=useState(false)
     let totalAmount=0.0;
     const {state,dispatch}=useStateContext();
@@ -40,14 +39,14 @@ return (
                                                             <h5>Rs/-{(quantity)*price}</h5>
                                                             </div>
                                                             <section className='button-qty'>
-                                                                <button onClick={()=>decrementQuantity(_id,dispatch,userId)} className='btn-primary'>-</button>
+                                                                <button onClick={()=>decrementQuantity(_id,dispatch)} className='btn-primary'>-</button>
                                                                 <span className='quantity'>{quantity}</span> 
-                                                                <button onClick={()=>incrementQuantity(_id,dispatch,userId)} className='btn-primary'>+</button>
+                                                                <button onClick={()=>incrementQuantity(_id,dispatch)} className='btn-primary'>+</button>
                                                             </section>
                                                             <section className='btn-section'>
                                                                  {/* <button className='btn btn-wishlist' onClick={()=>addToWatchlist(productItem,dispatch)}>Wishlist</button> */}
-                                                                 <button className='btn btn-remove' onClick={()=>removeFromCart(_id,dispatch,userId)}>Remove</button>
-                                                                 <button className='btn btn-remove-icon' onClick={()=>removeFromCart(_id,dispatch,userId)}><svg width="2em" height="2em" viewBox="0 0 24 24"><path d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12z"  fill="currentColor"></path></svg></button>
+                                                                 <button className='btn btn-remove' onClick={()=>removeFromCart(_id,dispatch)}>Remove</button>
+                                                                 <button className='btn btn-remove-icon' onClick={()=>removeFromCart(_id,dispatch)}><svg width="2em" height="2em" viewBox="0 0 24 24"><path d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12z"  fill="currentColor"></path></svg></button>
                                                             </section>
                                                         </div> 
                                                     </div> 

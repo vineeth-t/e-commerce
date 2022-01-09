@@ -28,9 +28,9 @@ export async function addToCart(productId,dispatch){
     console.log(error)
 }
 }
-export async function removeFromCart(productId,dispatch,userId){
+export async function removeFromCart(productId,dispatch){
     try{
-        const {data:{response,cartItems}}=await axios.post(`${API}/cart/${userId}`,{productId,flag:'DELETE'})
+        const {data:{response,cartItems}}=await axios.post(`${API}/cart/`,{productId,flag:'DELETE'})
         console.log(cartItems)
         if(response){
           dispatch({type:'SET_CART_ITEMS',payload:cartItems,toast:'Removed From Cart'})
@@ -41,9 +41,9 @@ export async function removeFromCart(productId,dispatch,userId){
     console.log(error)
 }
 }
-export async function incrementQuantity(productId,dispatch,userId){
+export async function incrementQuantity(productId,dispatch){
     try{
-        const {data:{response,cartItems}}=await axios.post(`${API}/cart/${userId}`,{productId,flag:'INC'})
+        const {data:{response,cartItems}}=await axios.post(`${API}/cart`,{productId,flag:'INC'})
         console.log(cartItems)
         if(response){
           dispatch({type:'SET_CART_ITEMS',payload:cartItems})
@@ -54,9 +54,9 @@ export async function incrementQuantity(productId,dispatch,userId){
     console.log(error)
 }
 }
-export async function decrementQuantity(productId,dispatch,userId){
+export async function decrementQuantity(productId,dispatch){
     try{
-        const {data:{response,cartItems}}=await axios.post(`${API}/cart/${userId}`,{productId,flag:'DEC'})
+        const {data:{response,cartItems}}=await axios.post(`${API}/cart`,{productId,flag:'DEC'})
         console.log(cartItems)
         if(response){
           dispatch({type:'SET_CART_ITEMS',payload:cartItems})
