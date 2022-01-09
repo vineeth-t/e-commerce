@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useAuth, useStateContext } from '../../contexts';
-import { loginHandler } from '../axios/axios';
+import { loginHandler } from '../axios'
 import './loginCard.css'
 export function Login(){
     const{authState:{userName,password},authDispatch}=useAuth();
@@ -41,3 +41,4 @@ export function Login(){
         </>
     )
 }
+

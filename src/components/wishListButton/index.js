@@ -1,5 +1,5 @@
 import { useStateContext,useAuth } from "../../contexts/index"
-import { addToWatchlist,removeFromWatchlist } from '../axios/axios';
+import { addToWatchlist,removeFromWatchlist } from '../axios/index';
 export function WishListButton({productId}){
     const{authState:{userId}} =useAuth();
     const{state:{wishListItems},dispatch}=useStateContext();

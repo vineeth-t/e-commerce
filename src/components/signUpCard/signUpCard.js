@@ -3,7 +3,7 @@ import { useNavigate,Navigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useAuth,useStateContext } from "../../contexts/index";
 import {signUpreducer, errorHandler, formChecker } from "../../reducers/index";
-import { signUpHandler } from "../axios/axios";
+import { signUpHandler } from "../axios";
 import { Mask } from "./inputFieldForPAssword";
 import './signUpCard.css'
 export function SignUp(){

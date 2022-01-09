@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useAuth,useStateContext } from "../../contexts";
-import { addToCart } from '../axios/axios';
+import { addToCart } from "../axios";
 export function CartButton({productId}){
     const{authState:{userId}}=useAuth();
     const {state:{cartItems},dispatch}=useStateContext();
