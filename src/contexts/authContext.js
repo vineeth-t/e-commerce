@@ -10,7 +10,6 @@ export function AuthProvider({children}){
     let initalState;
     if(loginStatus?.isUserLoggedIn){
      initalState={
-        userId:loginStatus.userid,
         login:true,
         userName:loginStatus.username,
         password:'',
@@ -20,7 +19,6 @@ export function AuthProvider({children}){
       
     }else{
         initalState={
-            userId:'',
             login:false,
             userName:'',
             password:'',

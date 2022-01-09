@@ -14,7 +14,7 @@ function App() {
     console.log(token)
     if(token){
       getCartItemsFromDB(dispatch);
-      // getWishListedItemsFromDB(token,dispatch,navigate)
+      getWishListedItemsFromDB(dispatch)
     }
   }(),[token,dispatch])
   return (
