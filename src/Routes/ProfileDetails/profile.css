@@ -1,0 +1,52 @@
+
+.li{
+    list-style: none;
+    padding:0.5rem;
+    cursor:pointer
+
+}
+.active{
+    font-weight: 700;
+}
+.profile-li{
+    position:absolute;
+    top:1rem;
+    left:10rem;
+    border-right :1px solid black
+}
+.logout{
+    position:absolute;
+    top:1rem;
+    right:5rem;
+}
+.add{
+    position:absolute;
+    top:1rem;
+    left:20rem;
+}
+.profile{
+    position: relative;
+    
+}
+.user-details{
+    position:absolute;
+    top:1rem;
+    left:25rem;
+    font-weight: 900;
+}
+.section-fields{
+    padding:1rem 0 0 1rem;
+    width:100%
+
+}
+.section-fields label{
+    margin: 1rem;
+}
+.address-li{
+    border:1px dotted black;
+    padding:1rem;
+    margin:1rem;
+}
+.delete{
+    margin:0
+}

@@ -11,6 +11,8 @@ export function authReducer(state,{type,payload}){
                             }
         case 'LOGOUT':
             return {...state,login:false,userName:'',password:'',token:''}
+        case 'SET_USER_DETAILS':
+            return{...state,name:payload.firstname+payload.lastname,emailId:payload.username}
         default: 
             return {...state}
     }

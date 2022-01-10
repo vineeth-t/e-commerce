@@ -2,8 +2,10 @@ import axios from "axios";
 import { API, setupAuthHeaderForServiceCalls } from "./axios.setup";
 
 export async function signUpHandler(e,navigate,formChecker,formState,errorDispatch,authDispatch,dispatch){
+  console.log(dispatch,formState)
     e.preventDefault();
-    if(formChecker(formState,errorDispatch)) {
+    try{
+      if(formChecker(formState,errorDispatch)) {
         const {data:{response,message,token}}=await axios.post(`${API}/signUp`,{firstname:formState.fname,lastname:formState.lname,username:formState.emailId,
         password:formState.password}) 
         if(response){
@@ -19,7 +21,11 @@ export async function signUpHandler(e,navigate,formChecker,formState,errorDispat
           dispatch({type:'TOAST',toast:message})
         }
             
-    }                             
+    }     
+   }catch(error){
+      console.log(error);
+      dispatch({type:'TOAST',toast:error.message})
+   }
   }
   export async function loginHandler(event,loginDetails,dispatch){
       event.preventDefault ();

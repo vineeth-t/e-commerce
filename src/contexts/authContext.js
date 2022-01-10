@@ -20,6 +20,8 @@ export function AuthProvider({children}){
     }else{
         initalState={
             login:false,
+            name:'',
+            emailId:'',
             userName:'',
             password:'',
             token:''
