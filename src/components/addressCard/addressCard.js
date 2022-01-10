@@ -36,7 +36,9 @@ export function AdressModal({setAddress}){
                                     </span>
                                 </div>
                     })}
-                <button className='btn' onClick={()=>setAddressForm(true)}>Add Address</button>
+                <button className='btn' onClick={()=>setAddressForm(true)}>
+                    Add New Address
+                </button>
           </ul>}
           <svg className='address-modal-close' onClick={()=>setAddress(false)} width="1.5em" height="2em" viewBox="0 0 24 24">
                     <g fill="none">

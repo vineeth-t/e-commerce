@@ -1,6 +1,7 @@
 import { useReducer } from 'react';
 import { useStateContext } from '../../contexts/state-context';
-import { addressHandler, addressErrorHandlerReducer, addressreducer } from '../../reducers/addressReducer';
+import { addressErrorHandlerReducer, addressreducer } from '../../reducers/addressReducer';
+import { addressHandler } from '../axios';
 export function AddressForm({setAddressForm}){
 const [error,dispatchError]=useReducer(addressErrorHandlerReducer,{});
 const{dispatch}=useStateContext();
