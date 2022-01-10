@@ -9,7 +9,7 @@ import './signUpCard.css'
 export function SignUp(){
   const navigate = useNavigate();
   const{authState:{login},authDispatch}=useAuth();
-  const{disptach}=useStateContext()
+  const{dispatch}=useStateContext()
   const [formState, formDispatch] = useReducer(signUpreducer, {
     fname: "",
     lname: "",
@@ -28,7 +28,7 @@ export function SignUp(){
         <h2>SIGN-UP</h2><br/>
         <h4>sign up to watch amazing videos</h4><br/>
         <form
-          onSubmit={(e) =>signUpHandler( e,navigate,formChecker,formState,errorDispatch,authDispatch,disptach)}
+          onSubmit={(e) =>signUpHandler( e,navigate,formChecker,formState,errorDispatch,authDispatch,dispatch)}
           className="signup-form">
           <div>
               <label> First Name:</label>
