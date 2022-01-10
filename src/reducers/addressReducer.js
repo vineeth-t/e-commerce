@@ -1,3 +1,5 @@
+
+
 export function addressreducer(state, { type, payload }) {
   switch(type){
     case 'SET_NAME':
@@ -73,10 +75,3 @@ export function addressErrorHandlerReducer(state, { type, payload }){
     
 }
 
-export function addressHandler(e,addressDetails,dispatch,dispatchError,setAddressForm){
-  e.preventDefault();
-  if(addressErrorHandler(addressDetails,dispatchError)){
-      dispatch({type:'ADD_ADDRESS_DETAILS',payload:addressDetails});
-      setAddressForm(false)
-  }
-}

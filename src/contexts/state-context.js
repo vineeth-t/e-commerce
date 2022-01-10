@@ -18,7 +18,7 @@ export function StateProvider({children}){
                                                   cartItems,
                                                   wishListItems,
                                                   toast,
-                                                  address_details:[initalAddress],
+                                                  address_details,
                                                   currentAddress:initalAddress
                                                  })
  useEffect(()=>
@@ -36,7 +36,7 @@ export function StateProvider({children}){
 export function useStateContext(){
   return useContext(StateContext);
 }
-export const products=[]
+export const products=[],address_details=[]
 export const cartItems=[];
 export const wishListItems=[];
 export let toast;

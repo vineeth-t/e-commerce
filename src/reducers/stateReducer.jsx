@@ -7,7 +7,7 @@ export function stateReducer(state,{type,payload,toast}){
         case 'SET_CART_ITEMS':
             return{...state,cartItems:payload,toast:toast}
         case 'ADD_ADDRESS_DETAILS':
-            return{...state,address_details:[...state.address_details,payload],note:''}
+            return{...state,address_details:payload,note:''}
         case 'CURRENT_ADDRESS':
             return{...state,currentAddress:payload,note:''}
         case 'TOAST':

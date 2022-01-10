@@ -2,3 +2,4 @@ export {addToWatchlist,removeFromWatchlist,getWishListedItemsFromDB} from './axi
 export {getCartItemsFromDB,addToCart,removeFromCart,incrementQuantity,decrementQuantity} from './axios.cart'
 export{signUpHandler,loginHandler} from './axios.loginSignUp'
 export {getproductFromDB} from './axios.getProduct'
+export{addressHandler} from './axios.address'
