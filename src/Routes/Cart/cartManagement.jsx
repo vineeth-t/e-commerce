@@ -64,7 +64,10 @@ return (
                                 <h5 style={{margin:"0 1rem 0 0"}}>Total Mrp Rs/-</h5>
                                 <h5>{totalAmount}</h5>
                             </div>
-                            <button className='btn-add2Cart'>Place Order</button>
+                            <button className='btn-add2Cart' onClick={()=>{
+                                alert('Coming Soon')
+                                dispatch({type:'TOAST',payload:'Under Construction'})
+                            }}>Place Order</button>
                     </div>}
              </div>
     </div>

@@ -1,4 +1,6 @@
-
+a{
+    color:black;
+}
 .li{
     list-style: none;
     padding:0.5rem;
@@ -7,6 +9,10 @@
 }
 .active{
     font-weight: 700;
+}
+.profile{
+    position: relative;
+    
 }
 .profile-li{
     position:absolute;
@@ -24,10 +30,7 @@
     top:1rem;
     left:20rem;
 }
-.profile{
-    position: relative;
-    
-}
+
 .user-details{
     position:absolute;
     top:1rem;
@@ -43,10 +46,52 @@
     margin: 1rem;
 }
 .address-li{
+    width:250px;
     border:1px dotted black;
     padding:1rem;
     margin:1rem;
 }
 .delete{
     margin:0
+}
+.btn-logout-mobile-only{
+    display: none;
+}
+@media screen and (max-width:768px) {
+    a{
+        color:black;
+    }
+    .profile{
+        position:unset;
+    }
+    .btn-logout-mobile-only{
+        display: block;
+        background-color: transparent;
+        border:none;
+    }
+    .profile-li {
+        position:unset;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        border:none;
+        
+    }
+    .user-details{
+        position:unset;
+        font-weight: 900;
+    }
+    .active{
+        font-size: large;
+        font-weight: 900;
+    }
+    .logout{
+        display: none;
+        
+    }
+    .add{
+     position: absolute;
+     top:5rem;
+     left:1rem;
+    }
 }

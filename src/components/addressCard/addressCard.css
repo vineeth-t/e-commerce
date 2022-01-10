@@ -95,11 +95,11 @@
      }
     .address-modal{
         position: fixed;
-        top:1rem;
+        top:3rem;
         padding:0;
     }
     .address-form{
-        margin:1rem 0 0 1rem;
+        margin:5rem 0 5rem 1.5rem;
         width: 330px;
     }
     .address-fields{
