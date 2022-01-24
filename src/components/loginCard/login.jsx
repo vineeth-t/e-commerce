@@ -3,6 +3,18 @@ import { Link } from "react-router-dom";
 import { useAuth, useStateContext } from "../../contexts";
 import { loginHandler } from "../axios";
 import "./loginCard.css";
+
+export function loginAsAdmin(event,authDispatch,state,navigate){
+  authDispatch({ type: "SET-USER-NAME", payload: "admin@gmail.com" });
+  authDispatch({ type: "SET-PASSWORD", payload: "admin@A1" });
+  loginHandler(event, {
+    state,
+    userName: "admin@gmail.com",
+    password: "admin@A1",
+    authDispatch,
+    navigate,
+  });
+}
 export function Login() {
   const {
     authState: { userName, password },
@@ -45,17 +57,7 @@ export function Login() {
         <button className="btn-logIn">LogIn</button>
         <button
           className="btn-logIn"
-          onClick={(event) => {
-            authDispatch({ type: "SET-USER-NAME", payload: "admin@gmail.com" });
-            authDispatch({ type: "SET-PASSWORD", payload: "admin@A1" });
-            loginHandler(event, {
-              state,
-              userName: "admin@gmail.com",
-              password: "admin@A1",
-              authDispatch,
-              navigate,
-            });
-          }}
+          onClick={(event) => loginAsAdmin(event,authDispatch,state,navigate)}
         >
           LogIn With Test Credentials
         </button>
