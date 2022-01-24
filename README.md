@@ -9,6 +9,7 @@ Tech Stack used-
     Back-end- MongoDB, Mongoose, ExpressJS, JWT for user authentication, Bcrypt for password Encryption 
 
 Functionalities present in the App
+
     1) Used Faker to generate the images, name of the product, price
     2) stored the data on MongoDB using MongooseJS models
         i)Login using userName and Password 
@@ -20,10 +21,10 @@ Functionalities present in the App
     7) Remove Button in the cart
     8) used Axios to fetch data 
     9) used ASYNC & AWAIT for API calls
-   10) Address Management 
+    10) Address Management 
             i) Add a new address
             ii) delete an address
-   11) Profile Management 
+    11) Profile Management 
          Here you can able to logout a user and check user details like address and user details 
 
 Backend express App link 
