@@ -4,7 +4,6 @@ import { API } from "./axios.setup";
 export async function getCartItemsFromDB(dispatch) {
   try {
     const { data: { response, cartItems } } = await axios.get(`${API}/cart`)
-    console.log(response, cartItems)
     if (response) {
       dispatch({ type: 'SET_CART_ITEMS', payload: cartItems })
     } else {
@@ -18,7 +17,6 @@ export async function getCartItemsFromDB(dispatch) {
 export async function addToCart(productId, dispatch) {
   try {
     const { data: { response, cartItems } } = await axios.post(`${API}/cart/`, { productId })
-    console.log(cartItems)
     if (response) {
       dispatch({ type: 'SET_CART_ITEMS', payload: cartItems, toast: 'Added to Cart' })
     } else {
@@ -31,7 +29,6 @@ export async function addToCart(productId, dispatch) {
 export async function removeFromCart(productId, dispatch) {
   try {
     const { data: { response, cartItems } } = await axios.post(`${API}/cart/`, { productId, flag: 'DELETE' })
-    console.log(cartItems)
     if (response) {
       dispatch({ type: 'SET_CART_ITEMS', payload: cartItems, toast: 'Removed From Cart' })
     } else {
@@ -44,7 +41,6 @@ export async function removeFromCart(productId, dispatch) {
 export async function incrementQuantity(productId, dispatch) {
   try {
     const { data: { response, cartItems } } = await axios.post(`${API}/cart`, { productId, flag: 'INC' })
-    console.log(cartItems)
     if (response) {
       dispatch({ type: 'SET_CART_ITEMS', payload: cartItems })
     } else {
@@ -57,7 +53,6 @@ export async function incrementQuantity(productId, dispatch) {
 export async function decrementQuantity(productId, dispatch) {
   try {
     const { data: { response, cartItems } } = await axios.post(`${API}/cart`, { productId, flag: 'DEC' })
-    console.log(cartItems)
     if (response) {
       dispatch({ type: 'SET_CART_ITEMS', payload: cartItems })
     } else {
