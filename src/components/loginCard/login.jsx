@@ -5,8 +5,8 @@ import { loginHandler } from "../axios";
 import "./loginCard.css";
 
 export function loginAsAdmin(event,authDispatch,state,navigate){
-  authDispatch({ type: "SET-USER-NAME", payload: "admin@gmail.com" });
-  authDispatch({ type: "SET-PASSWORD", payload: "admin@A1" });
+  authDispatch({ type: "SET_USER_NAME", payload: "admin@gmail.com" });
+  authDispatch({ type: "SET_PASSWORD", payload: "admin@A1" });
   loginHandler(event, {
     state,
     userName: "admin@gmail.com",
@@ -36,7 +36,7 @@ export function Login() {
             type="text"
             onChange={(event) =>
               authDispatch({
-                type: "SET-USER-NAME",
+                type: "SET_USER_NAME",
                 payload: event.target.value,
               })
             }
@@ -48,7 +48,7 @@ export function Login() {
             type="password"
             onChange={(event) =>
               authDispatch({
-                type: "SET-PASSWORD",
+                type: "SET_PASSWORD",
                 payload: event.target.value,
               })
             }

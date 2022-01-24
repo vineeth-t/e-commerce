@@ -1,8 +1,8 @@
 export function authReducer(state, { type, payload }) {
     switch (type) {
-        case 'SET-USER-NAME':
+        case 'SET_USER_NAME':
             return { ...state, userName: payload }
-        case 'SET-PASSWORD':
+        case 'SET_PASSWORD':
             return { ...state, password: payload }
         case 'LOGIN':
             return {
