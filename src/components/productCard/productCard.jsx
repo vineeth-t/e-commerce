@@ -1,26 +1,30 @@
-import './card.css'
-import { WishListButton } from '../wishListButton';
-import { CartButton } from '..';
-export function ProductCard({productItem}){
-    const {_id,name,image,price,fastDelivery,inStock}=productItem;
-    const cardStyle=inStock?'card-overlay':'card-OutOfStock'
-    return (
-        <>
-        <div className={cardStyle}>
-                <img className='card-img' src={image} alt="cardImage"/> 
-                <h4>{name}</h4>
-                <small className="Item Item-price"> Rs.{price} </small>
-                <s className="Item Item-discount">Rs.{price-0.5*price}</s>
-                <span className="Item Item-discountPercentage">(50% off) </span>
-                {fastDelivery&&<div className='badgeOnCard'>Fast Delivery</div>}
-                {inStock? <>
-                    <WishListButton productId={_id}/>
-                <br/>
-                 <CartButton productId={_id}/>
-            </>:<h4>OutOfStock</h4>}
-        </div>
-       
- {/* {!inStock&& 
+import "./card.css";
+import { WishListButton } from "../wishListButton";
+import { CartButton } from "..";
+export function ProductCard({ productItem }) {
+  const { _id, name, image, price, fastDelivery, inStock } = productItem;
+  const cardStyle = inStock ? "card-overlay" : "card-OutOfStock";
+  return (
+    <>
+      <div className={cardStyle}>
+        <img className="card-img" src={image} alt="cardImage" />
+        <h4>{name}</h4>
+        <small className="Item Item-price"> Rs.{price} </small>
+        <s className="Item Item-discount">Rs.{price - 0.5 * price}</s>
+        <span className="Item Item-discountPercentage">(50% off) </span>
+        {fastDelivery && <div className="badgeOnCard">Fast Delivery</div>}
+        {inStock ? (
+          <>
+            <WishListButton productId={_id} />
+            <br />
+            <CartButton productId={_id} />
+          </>
+        ) : (
+          <h4>OutOfStock</h4>
+        )}
+      </div>
+
+      {/* {!inStock&& 
         <div className='card-OutOfStock'>
                 <img className='card-img' src={image} alt="cardImage"/> 
                 <h4>{name}</h4>
@@ -45,6 +49,6 @@ export function ProductCard({productItem}){
                 <h4>Out Of Stock</h4>
              </div>
              } */}
-        </>
-    )
+    </>
+  );
 }

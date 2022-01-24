@@ -1,19 +1,20 @@
-export function authReducer(state,{type,payload}){
-    switch(type){
+export function authReducer(state, { type, payload }) {
+    switch (type) {
         case 'SET-USER-NAME':
-            return {...state,userName:payload}
+            return { ...state, userName: payload }
         case 'SET-PASSWORD':
-            return{...state,password:payload}
+            return { ...state, password: payload }
         case 'LOGIN':
-            return {...state,login:true,
-                             userName:payload.fname,
-                             token:payload.token
-                            }
+            return {
+                ...state, login: true,
+                userName: payload.fname,
+                token: payload.token
+            }
         case 'LOGOUT':
-            return {...state,login:false,userName:'',password:'',token:''}
+            return { ...state, login: false, userName: '', password: '', token: '' }
         case 'SET_USER_DETAILS':
-            return{...state,name:payload.firstname+payload.lastname,emailId:payload.username}
-        default: 
-            return {...state}
+            return { ...state, name: payload.firstname + payload.lastname, emailId: payload.username }
+        default:
+            return { ...state }
     }
 }

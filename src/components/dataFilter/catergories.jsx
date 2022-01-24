@@ -1,12 +1,23 @@
-import { useDataFilter } from '../../contexts/index'
-export function Catergories({showtheFilter,setTheFilter}){
-    const{state:{toggleInventory,showJCAssured},dispatch}= useDataFilter()
-    return <>
-    <div className='filterCard-heading'>
-      <h3>Filters</h3>
-     {showtheFilter==='filter-card'&& <button style={{backgroundColor:'inherit'}} onClick={()=>setTheFilter('')}>X</button>}
-    </div>
-    {/* <div className='filterCard-radio-btn'>
+import { useDataFilter } from "../../contexts/index";
+export function Catergories({ showtheFilter, setTheFilter }) {
+  const {
+    state: { toggleInventory, showJCAssured },
+    dispatch,
+  } = useDataFilter();
+  return (
+    <>
+      <div className="filterCard-heading">
+        <h3>Filters</h3>
+        {showtheFilter === "filter-card" && (
+          <button
+            style={{ backgroundColor: "inherit" }}
+            onClick={() => setTheFilter("")}
+          >
+            X
+          </button>
+        )}
+      </div>
+      {/* <div className='filterCard-radio-btn'>
         <h4>Categories</h4>
          <label>
              <input type ='checkbox'/>
@@ -52,16 +63,25 @@ export function Catergories({showtheFilter,setTheFilter}){
                Jbl
         </label>
     </div> */}
-    <div className='filterCard-radio-btn'>
+      <div className="filterCard-radio-btn">
         <h4>Others</h4>
         <label>
-             <input type ='checkbox' checked={showJCAssured} onChange={()=>dispatch({type:'FAST_DELIVERY'})} />
-               Fast Delivery
+          <input
+            type="checkbox"
+            checked={showJCAssured}
+            onChange={() => dispatch({ type: "FAST_DELIVERY" })}
+          />
+          Fast Delivery
         </label>
         <label>
-             <input type ='checkbox' checked={toggleInventory} onChange={()=>dispatch({type:'INCLUDE_OUT_OF_STOCK'})} />
-               Include Out Of Stock
+          <input
+            type="checkbox"
+            checked={toggleInventory}
+            onChange={() => dispatch({ type: "INCLUDE_OUT_OF_STOCK" })}
+          />
+          Include Out Of Stock
         </label>
-    </div>
+      </div>
     </>
+  );
 }

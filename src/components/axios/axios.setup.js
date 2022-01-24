@@ -1,21 +1,21 @@
 import axios from "axios";
-export const API='https://jungle-clap-backend-server.herokuapp.com'
-export  function setupAuthHeaderForServiceCalls(token) {
-    if (token) {
-      return (axios.defaults.headers.common["Authorization"] = token);
-    }
-    delete axios.defaults.headers.common["Authorization"];
+export const API = 'https://jungle-clap-backend-server.herokuapp.com'
+export function setupAuthHeaderForServiceCalls(token) {
+  if (token) {
+    return (axios.defaults.headers.common["Authorization"] = token);
   }
-export function setupAuthExceptionHandler(logoutHandler, navigate,authDispatch) {
-    const UNAUTHORIZED = 401;
-    axios.interceptors.response.use((response) =>response,
-      (error) => {
-        if (error?.response?.status === UNAUTHORIZED) {
-          
-          logoutHandler(authDispatch);
-          navigate("/login");
-        }
-        return Promise.reject(error);
+  delete axios.defaults.headers.common["Authorization"];
+}
+export function setupAuthExceptionHandler(logoutHandler, navigate, authDispatch) {
+  const UNAUTHORIZED = 401;
+  axios.interceptors.response.use((response) => response,
+    (error) => {
+      if (error?.response?.status === UNAUTHORIZED) {
+
+        logoutHandler(authDispatch);
+        navigate("/login");
       }
-    );
-  }
+      return Promise.reject(error);
+    }
+  );
+}
