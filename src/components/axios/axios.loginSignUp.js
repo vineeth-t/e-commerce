@@ -2,7 +2,6 @@ import axios from "axios";
 import { API, setupAuthHeaderForServiceCalls } from "./axios.setup";
 
 export async function signUpHandler(e, navigate, formChecker, formState, errorDispatch, authDispatch, dispatch) {
-  console.log(dispatch, formState)
   e.preventDefault();
   try {
     if (formChecker(formState, errorDispatch)) {
@@ -37,7 +36,6 @@ export async function loginHandler(event, loginDetails, dispatch) {
       dispatch({ type: 'TOAST', toast: 'Login Details Required' })
     } else {
       const { data: { response, fname, message, token } } = await axios.post(`${API}/login`, { username: userName, password: password })
-      console.log({ response, fname, message, token })
       if (response) {
         localStorage?.setItem('login', JSON.stringify({
           isUserLoggedIn: true,
