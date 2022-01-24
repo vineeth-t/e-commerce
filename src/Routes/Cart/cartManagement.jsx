@@ -27,7 +27,6 @@ return (
                 <div>
                     {state.cartItems.map(({product,quantity})=>{
                         const {_id,name,image,price}= product
-                        // const productItem={id,name,image,price,quantity,inStock}
                         totalAmount=totalAmount + ( (quantity)*parseInt( price, 10 ))
                     return (
                             <div className='cart-container'>
