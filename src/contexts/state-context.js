@@ -28,7 +28,7 @@ export function StateProvider({ children }) {
 
     }(), [])
   return (
-    <StateContext.Provider value={{ state, dispatch, loader }}>
+    <StateContext.Provider value={{ state, dispatch, loader,setLoader }}>
       {children}
     </StateContext.Provider>
   )

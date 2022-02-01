@@ -6,6 +6,7 @@ export async function getproductFromDB(setLoader, dispatch) {
     const { data: { response, products } } = await axios.get(`${API}/products`)
     if (response) {
       dispatch({ type: 'SET_PRODUCTS', payload: products })
+      setLoader(false)
     } else {
       dispatch({ type: 'TOAST', toast: 'Refresh the Page' })
     }
@@ -14,6 +15,6 @@ export async function getproductFromDB(setLoader, dispatch) {
     console.log(error.message)
     dispatch({ type: 'TOAST', toast: error.message })
   } finally {
-    setLoader(false)
+    
   }
 }

@@ -1,0 +1,20 @@
+.loader{
+    padding: 0.2rem 0.5rem;
+    animation: load 1s ease-in-out 1s infinite;
+    margin: auto;
+    position: absolute;
+    left:40rem;
+    top:10rem;
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+@keyframes load {
+    from {
+        transform: rotateX(0deg);
+      }
+    
+      to {
+        transform: rotateX(360deg);
+      }
+}

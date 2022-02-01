@@ -4,6 +4,7 @@ import { ProductCard } from "../../components";
 import { DataFiltering } from "../../components";
 import { useDataFilter } from "../../contexts";
 import { getFilterData, getSortedData } from "../../reducers/filterReducer";
+import { Loader } from "../../components/loader/loader";
 export function ProductItemsListing({ setState }) {
   const {
     state: { products },
@@ -18,15 +19,17 @@ export function ProductItemsListing({ setState }) {
     toggleInventory,
     showJCAssured,
   });
-
+  console.log(loader)
   return (
+    <>
     <div className="item-page">
-      <h3>{loader && "loading..."}</h3>
-      <div className="item-filter">
-        <DataFiltering />
-      </div>
+    
+      {loader ?<Loader/>:<div className="item-filter">
+      <DataFiltering />
+        </div>}
+      
       <div className="item-list">
-        {filterData.map((productItem) => {
+        {filterData?.map((productItem) => {
           return (
             <ProductCard
               key={productItem._id}
@@ -38,5 +41,6 @@ export function ProductItemsListing({ setState }) {
         })}
       </div>
     </div>
+    </>
   );
 }
