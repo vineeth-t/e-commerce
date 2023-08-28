@@ -1,5 +1,5 @@
 import axios from "axios";
-export const API = 'https://jungle-clap-backend-server.herokuapp.com'
+export const API = 'https://jungleclap.onrender.com'
 export function setupAuthHeaderForServiceCalls(token) {
   if (token) {
     return (axios.defaults.headers.common["Authorization"] = token);
